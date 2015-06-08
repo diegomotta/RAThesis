@@ -1,0 +1,34 @@
+<h1>Listing consulta_clientes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Telefono</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% if @empresa.consulta_clientes.empty? == false %>
+    <% @consulta_clientes.each do |consulta_cliente| %>
+      <tr>
+        <td><%= consulta_cliente.nombre %></td>
+        <td><%= consulta_cliente.correo%></td>
+        <td><%= consulta_cliente.telefono%></td>
+        <td><%= consulta_cliente.descripcion%></td>
+        <td><%= link_to 'Show', empresa_consulta_cliente_path(@empresa,consulta_cliente) %></td>
+        <td><%= link_to 'Edit', [:edit, @empresa,consulta_cliente]%></td>
+        <td><%= link_to 'Destroy',[consulta_cliente.empresa, consulta_cliente], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Consulta cliente', new_empresa_consulta_cliente_path %>

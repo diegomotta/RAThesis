@@ -1,0 +1,17 @@
+<%= form_for([@empresa, @informacion_empresa]) do |f| %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Itemtitulo:</strong>
+  <%= @informacion_empresa.itemTitulo %>
+</p>
+
+<p>
+  <strong>Empresa:</strong>
+  <%= @informacion_empresa.empresa.nombre %>
+</p>
+
+<%= link_to 'Edit', edit_empresa_informacion_empresa_path(@empresa,@informacion_empresa) %> |
+<%= link_to 'Back', empresa_informacion_empresas_path %>
+<% end %>

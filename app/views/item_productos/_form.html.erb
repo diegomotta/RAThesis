@@ -1,0 +1,31 @@
+<%= form_for([@empresa,@producto,@item_producto]) do |f| %>
+  <% if @item_producto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_producto.errors.count, "error") %> prohibited this item_producto from being saved:</h2>
+
+      <ul>
+      <% @item_producto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :marca %><br>
+    <%= f.text_field :marca %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo %><br>
+    <%= f.text_field :tipo %>
+  </div>
+
+    <div class="field">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+        </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

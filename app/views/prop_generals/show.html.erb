@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @prop_general.descripción %>
+</p>
+
+<%= link_to 'Edit', edit_empresa_producto_prop_general_path(@empresa,@producto,@prop_general) %> |
+<%= link_to 'Back', empresa_producto_prop_generals_path %>

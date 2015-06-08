@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @prop_general_item.item %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @prop_general_item.descripción %>
+</p>
+
+<%= link_to 'Edit', edit_empresa_producto_prop_general_prop_general_item_path(@empresa,@producto,@prop_general,@prop_general_item) %> |
+<%= link_to 'Back', empresa_producto_prop_general_prop_general_items_path %>

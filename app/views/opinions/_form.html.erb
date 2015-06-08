@@ -1,0 +1,37 @@
+<%= form_for([@empresa,@producto,@item_producto,@opinion]) do |f| %>
+  <% if @opinion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@opinion.errors.count, "error") %> prohibited this opinion from being saved:</h2>
+
+      <ul>
+      <% @opinion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :nacionalidad %><br>
+    <%= f.text_field :nacionalidad %>
+  </div>
+  <div class="field">
+    <%= f.label :pais %><br>
+    <%= f.text_field :pais %>
+  </div>
+  <div class="field">
+    <%= f.label :ciudad %><br>
+    <%= f.text_field :ciudad %>
+  </div>
+  <div class="field">
+    <%= f.label :comentario %><br>
+    <%= f.text_field :comentario %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

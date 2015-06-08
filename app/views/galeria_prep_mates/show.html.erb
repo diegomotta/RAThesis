@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Título:</strong>
+  <%= @galeria_prep_mate.título %>
+</p>
+
+<p>
+  <strong>Descrición:</strong>
+  <%= @galeria_prep_mate.descrición %>
+</p>
+<p>
+  <strong>Imagen:</strong>
+ <td><%= @galeria_prep_mate.image.url(:thumb) %></td>
+</p>
+
+<%= link_to 'Edit', edit_galeria_prep_mate_path(@galeria_prep_mate) %> |
+<%= link_to 'Back', galeria_prep_mates_path %>

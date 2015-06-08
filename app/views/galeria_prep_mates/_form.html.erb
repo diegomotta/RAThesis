@@ -1,0 +1,29 @@
+<%= form_for(@galeria_prep_mate) do |f| %>
+  <% if @galeria_prep_mate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@galeria_prep_mate.errors.count, "error") %> prohibited this galeria_prep_mate from being saved:</h2>
+
+      <ul>
+      <% @galeria_prep_mate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :título %><br>
+    <%= f.text_field :título %>
+  </div>
+  <div class="field">
+    <%= f.label :descrición %><br>
+    <%= f.text_area :descrición %>
+  </div>
+      <div class="field">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+        </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

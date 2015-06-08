@@ -1,0 +1,30 @@
+<h1>Listing prop_especificas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Descripción</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% if @detalle.prop_especificas.empty? == false%>
+    <% @prop_especificas.each do |prop_especifica| %>
+      <tr>
+        <td><%= prop_especifica.item %></td>
+        <td><%= prop_especifica.descripción %></td>
+        <td><%= link_to 'Show', empresa_producto_item_producto_detalle_prop_especifica_path(@empresa,@producto,@item_producto,@detalle,prop_especifica) %></td>
+        <td><%= link_to 'Edit', [:edit, @empresa,@producto,@item_producto,@detalle,prop_especifica]%></td>
+        <td><%= link_to 'Destroy', empresa_producto_item_producto_detalle_prop_especifica_path(@empresa,@producto,@item_producto,@detalle,prop_especifica), method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo', new_empresa_producto_item_producto_detalle_prop_especifica_path %>
+<%= link_to 'Volver', empresa_producto_item_producto_detalles_path %>

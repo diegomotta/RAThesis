@@ -1,0 +1,2 @@
+module GaleriaPrepMatesHelper
+end

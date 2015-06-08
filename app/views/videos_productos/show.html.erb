@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @video_producto.titulo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @video_producto.descripcion %>
+</p>
+<p>
+  <strong>Url:</strong>
+  <%= @video_producto.url %>
+</p>
+
+ <p>
+ <% @video_id = (/([\w-]{11})/.match(@video_producto.url)).to_s %>
+<%@embed_code = "<iframe width='640' height='360' src='http://www.youtube.com/embed/#{@video_id}' frameborder='0' allowfullscreen></iframe>"%>
+<%= raw(@embed_code) %>	
+ </p>
+
+<%= link_to 'Edit', edit_empresa_producto_item_producto_videos_producto_path(@empresa,@producto,@item_producto,@video_producto) %> 
+<%= link_to 'Back',  empresa_producto_item_producto_videos_productos_path %>

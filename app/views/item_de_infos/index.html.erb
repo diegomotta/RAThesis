@@ -1,0 +1,34 @@
+<h1>Listing item_de_infos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descripción</th>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @informacion_empresa.item_de_infos.empty? == false %>
+    <% @item_de_infos.each do |item_de_info| %>
+      <tr>
+        <td><%= item_de_info.título %></td>
+        <td><%= item_de_info.descripción %></td>
+        <td><%= image_tag item_de_info.image.url(:thumb) %></td>
+        <td><%= link_to 'Show',  empresa_informacion_empresa_item_de_info_path(@empresa,@informacion_empresa,item_de_info) %></td>
+        <td><%= link_to 'Edit', [:edit, @empresa,@informacion_empresa,item_de_info]%></td>     
+         <td><%= link_to 'Destroy',empresa_informacion_empresa_item_de_info_path(@empresa,@informacion_empresa,item_de_info), method: :delete, data: { confirm: 'Are you sure?' } %></td>  
+
+      </tr>
+    <% end %>
+    <%end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item de info',  new_empresa_informacion_empresa_item_de_info_path %>
+<%= link_to 'Back Informacion de empresa', empresa_informacion_empresas_path %>
+<%= link_to 'Inicio',empresas_path %>

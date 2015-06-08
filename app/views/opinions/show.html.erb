@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @opinion.nombre %>
+</p>
+
+<p>
+  <strong>Nacionalidad:</strong>
+  <%= @opinion.nacionalidad %>
+</p>
+
+<p>
+  <strong>Pais:</strong>
+  <%= @opinion.pais %>
+</p>
+
+<p>
+  <strong>Ciudad:</strong>
+  <%= @opinion.ciudad %>
+</p>
+
+<p>
+  <strong>Comentario:</strong>
+  <%= @opinion.comentario %>
+</p>
+
+<%= link_to 'Edit', edit_empresa_producto_item_producto_opinion_path(@empresa,@producto,@item_producto,@opinion) %> 
+<%= link_to 'Back', empresa_producto_item_producto_opinions_path%>

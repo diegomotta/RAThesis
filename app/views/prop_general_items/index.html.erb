@@ -1,0 +1,30 @@
+<h1>Listing prop_general_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Descripción</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @prop_general.prop_general_items.empty? == false %>
+    <% @prop_general_items.each do |prop_general_item| %>
+      <tr>
+        <td><%= prop_general_item.item %></td>
+        <td><%= prop_general_item.descripción %></td>
+        <td><%= link_to 'Show', empresa_producto_prop_general_prop_general_item_path(@empresa,@producto,@prop_general,prop_general_item) %></td>
+        <td><%= link_to 'Edit', edit_empresa_producto_prop_general_prop_general_item_path(@empresa,@producto,@prop_general,prop_general_item) %></td>
+        <td><%= link_to 'Destroy', empresa_producto_prop_general_prop_general_item_path(@empresa,@producto,@prop_general,prop_general_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo', new_empresa_producto_prop_general_prop_general_item_path %>
+<%= link_to 'Atras', empresa_producto_prop_generals_path %>

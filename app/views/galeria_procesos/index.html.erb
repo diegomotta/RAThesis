@@ -1,0 +1,31 @@
+<h1>Listing galeria_procesos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descrición</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% if @producto.galeria_procesos.empty? == false%>
+    <% @galeria_procesos.each do |galeria_proceso| %>
+      <tr>
+        <td><%= galeria_proceso.título %></td>
+        <td><%= galeria_proceso.descrición %></td>
+        <td><%= image_tag galeria_proceso.image.url(:thumb) %></td>
+        <td><%= link_to 'Show', empresa_producto_galeria_proceso_path(@empresa,@producto,galeria_proceso) %></td>
+        <td><%= link_to 'Edit', edit_empresa_producto_galeria_proceso_path(@empresa,@producto,galeria_proceso) %></td>
+        <td><%= link_to 'Destroy', empresa_producto_galeria_proceso_path(@empresa,@producto,galeria_proceso), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+<% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo', new_empresa_producto_galeria_proceso_path %>
+<%= link_to 'Atras', empresa_productos_path %>

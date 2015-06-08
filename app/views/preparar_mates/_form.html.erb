@@ -1,0 +1,27 @@
+
+<%= form_for([@empresa,@producto,@preparar_mate]) do |f| %>
+
+  <% if @preparar_mate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@preparar_mate.errors.count, "error") %> prohibited this preparar_mate from being saved:</h2>
+
+      <ul>
+      <% @preparar_mate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :título %><br>
+    <%= f.text_field :título %>
+  </div>
+  <div class="field">
+    <%= f.label :descrición %><br>
+    <%= f.text_area :descrición %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

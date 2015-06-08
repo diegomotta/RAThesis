@@ -1,0 +1,84 @@
+
+<%= form_for(@empresa) do |f| %>
+  <% if @empresa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@empresa.errors.count, "error") %> prohibited this empresa from being saved:</h2>
+
+      <ul>
+      <% @empresa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="col-md-5">
+<form class="form-horizontal" >
+
+    <fieldset>
+        <legend><h3>Datos de empresa</h3></legend>
+        <div class="form-group">
+            <%= f.label :nombre, class: "col-lg-2 control-label"  %>
+          <div class="col-lg-10">
+            <%= f.text_field :nombre, class: "form-control", placeholder: "Nombre"%>
+          </div>
+        </div>
+        <div class="form-group">
+            <%= f.label :actividad, class: "col-lg-2 control-label"  %>
+          <div class="col-lg-10">
+            <%= f.text_field :actividad, class: "form-control", placeholder: "Actividad"%>
+          </div>
+        </div>
+       <div class="form-group">
+            <%= f.label :país, class: "col-lg-2 control-label"  %>
+          <div class="col-lg-10">
+            <%= f.text_field :país, class: "form-control", placeholder: "País"%>
+          </div>
+       </div>        
+       <div class="form-group">
+            <%= f.label :provincia, class: "col-lg-2 control-label"  %>
+          <div class="col-lg-10">
+            <%= f.text_field :provincia, class: "form-control", placeholder: "Provincia"%>
+          </div>
+       </div>
+       <div class="form-group">
+            <%= f.label :localidad, class: "col-lg-2 control-label"  %>
+          <div class="col-lg-10">
+            <%= f.text_field :localidad, class: "form-control", placeholder: "Localidad"%>
+          </div>
+       </div>
+       <div class="form-group">
+            <%= f.label :dirección, class: "col-lg-2 control-label"  %>
+          <div class="col-lg-10">
+            <%= f.text_field :dirección, class: "form-control", placeholder: "Dirección"%>
+          </div>
+       </div>
+        <div class="form-group">
+            <%= f.label :telefono, class: "col-lg-2 control-label"  %>
+          <div class="col-lg-10">
+            <%= f.text_field :telefono, class: "form-control", placeholder: "Telefono"%>
+          </div>
+       </div> 
+       <div class="form-group">
+            <%= f.label :misión, class: "col-lg-2 control-label"  %>
+          <div class="col-lg-10">
+            <%= f.text_field :misión, class: "form-control", placeholder: "Misión"%>
+          </div>
+       </div> 
+       <div class="form-group">
+            <%= f.label :visión, class: "col-lg-2 control-label"  %>
+          <div class="col-lg-10">
+            <%= f.text_field :visión, class: "form-control", placeholder: "Visión"%>
+          </div>
+       </div>        
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <%= f.submit "Nuevo", class: "btn btn-success btn-raised" %>
+                <%= link_to 'Atrás', empresas_path,class: "btn btn-success btn-raised" %>
+            </div>
+        </div>
+
+</fieldset>
+
+</form>
+</div>
+<% end %>

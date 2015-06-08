@@ -1,0 +1,2 @@
+module PropGeneralItemsHelper
+end

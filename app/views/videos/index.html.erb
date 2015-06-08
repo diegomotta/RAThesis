@@ -1,0 +1,36 @@
+<h1>Listing videos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Url</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+     <% if @empresa.videos.empty? == false%>
+     <% @videos.each do |video| %>
+     <tr>
+        <td><%= video.titulo %></td>
+        <td><%= video.url %></td>
+        <td><% @video_id = (/([\w-]{11})/.match(video.url)).to_s %>
+        <%@embed_code = "<iframe width='440' height='260' src='http://www.youtube.com/embed/#{@video_id}' frameborder='0' allowfullscreen></iframe>"%>
+        <%= raw(@embed_code) %>         
+        </td>
+        <td><%= video.descripcion %></td>
+        <td><%= link_to 'Show', empresa_video_path(@empresa,video) %></td>
+        <td><%= link_to 'Edit', edit_empresa_video_path(@empresa,video)%></td>
+        <td><%= link_to 'Destroy',[video.empresa, video], method: :delete, data: { confirm: 'Are you sure?'} %>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Video', new_empresa_video_path %>
+<%= link_to 'Back', empresas_path %>

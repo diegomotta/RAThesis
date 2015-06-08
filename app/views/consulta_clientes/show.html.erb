@@ -1,0 +1,25 @@
+<%= form_for([@empresa, @consulta_cliente]) do |f| %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @consulta_cliente.nombre %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @consulta_cliente.correo %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @consulta_cliente.telefono %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @consulta_cliente.descripcion %>
+</p>
+<%end%>
+<!--<%= link_to 'Edit', edit_empresa_consulta_cliente_path(@empresa,@consulta_cliente) %> -->
+<%= link_to 'Back', empresa_consulta_clientes_path %>

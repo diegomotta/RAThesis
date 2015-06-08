@@ -1,0 +1,33 @@
+<h1>Listing noticia</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Descripcion</th>
+      <th>Empresa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @empresa.noticia_empresas.empty? == false %>
+    <% @noticia_empresas.each do |noticia_empresa| %>
+      <tr>
+        <td><%= noticia_empresa.titulo %></td>
+        <td><%= noticia_empresa.descripcion %></td>
+        <td><%= image_tag noticia_empresa.image.url(:thumb) %></td>
+        <td><%= noticia_empresa.empresa %></td>
+        <td><%= link_to 'Show', empresa_noticia_empresa_path(@empresa,noticia_empresa) %></td>
+        <td><%= link_to 'Edit', edit_empresa_noticia_empresa_path(@empresa,noticia_empresa)%></td>
+        <td><%= link_to 'Destroy',[noticia_empresa.empresa, noticia_empresa], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+        <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Noticia', new_empresa_noticia_empresa_path %>
+<%= link_to 'Back', empresas_path%>

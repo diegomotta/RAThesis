@@ -1,0 +1,45 @@
+<%= form_for([@empresa,@producto,@item_producto,@detalle]) do |f| %>
+  <% if @detalle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@detalle.errors.count, "error") %> prohibited this detalle from being saved:</h2>
+
+      <ul>
+      <% @detalle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descripción %><br>
+    <%= f.text_field :descripción %>
+  </div>
+  <div class="field">
+    <%= f.label :elaboración %><br>
+    <%= f.text_field :elaboración %>
+  </div>
+  <div class="field">
+    <%= f.label :presentación %><br>
+    <%= f.text_field :presentación %>
+  </div>
+    <div class="field">
+    <%= f.label :packaging %><br>
+    <%= f.text_field :packaging %>
+  </div>
+  <div class="field">
+    <%= f.label :origen %><br>
+    <%= f.text_field :origen %>
+  </div>
+  <div class="field">
+    <%= f.label :secanza %><br>
+    <%= f.text_field :secanza %>
+  </div>
+  <div class="field">
+    <%= f.label :característica %><br>
+    <%= f.text_field :característica %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

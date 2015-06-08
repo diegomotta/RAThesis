@@ -1,0 +1,30 @@
+<h1>Listing preparar_mates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descrición</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%if  @producto.preparar_mates.empty? == false %>
+    <% @preparar_mates.each do |preparar_mate| %>
+      <tr>
+        <td><%= preparar_mate.título %></td>
+        <td><%= preparar_mate.descrición %></td>
+        <td><%= link_to 'Show', empresa_producto_preparar_mate_path(@empresa,@producto,preparar_mate) %></td>
+        <td><%= link_to 'Edit', edit_empresa_producto_preparar_mate_path(@empresa,@producto,preparar_mate) %></td>
+        <td><%= link_to 'Destroy', empresa_producto_preparar_mate_path(@empresa,@producto,preparar_mate) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+        <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Imagenes', galeria_prep_mates_path %>
+<%= link_to 'New Preparar mate', new_empresa_producto_preparar_mate_path %>
+<%= link_to 'Atras', empresa_productos_path %>

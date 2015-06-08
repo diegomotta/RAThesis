@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @detalle.descripción %>
+</p>
+
+<p>
+  <strong>Elaboracion:</strong>
+  <%= @detalle.elaboración %>
+</p>
+
+<p>
+  <strong>Presentación:</strong>
+  <%= @detalle.presentación %>
+</p>
+
+<p>
+  <strong>Origen:</strong>
+  <%= @detalle.origen %>
+</p>
+
+<p>
+  <strong>Secanza:</strong>
+  <%= @detalle.secanza %>
+</p>
+
+<p>
+  <strong>Característica:</strong>
+  <%= @detalle.característica %>
+</p>
+
+<%= link_to 'Edit', edit_empresa_producto_item_producto_detalle_path(@empresa,@producto,@item_producto,@detalle) %> 
+<%= link_to 'Back',  empresa_producto_item_producto_detalles_path %>

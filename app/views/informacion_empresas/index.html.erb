@@ -1,0 +1,27 @@
+<h1>Listing informacion_empresas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Itemtitulo</th>
+      <th>Empresa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% if @empresa.informacion_empresas.empty? == false %>
+    <% @informacion_empresas.each do |informacion_empresa| %>
+      <tr>
+        <td><%= informacion_empresa.itemTitulo %></td>
+        <td><%= informacion_empresa.empresa.nombre %></td>
+        <td><%= link_to 'Show', empresa_informacion_empresa_path(@empresa,informacion_empresa) %></td>
+        <td><%= link_to 'Edit', [:edit, @empresa,informacion_empresa]%></td>
+        <td><%= link_to 'Destroy',[informacion_empresa.empresa, informacion_empresa], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Items',empresa_informacion_empresa_item_de_infos_path(@empresa,informacion_empresa)  %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Informacion empresa', new_empresa_informacion_empresa_path %>

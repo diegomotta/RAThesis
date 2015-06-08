@@ -1,0 +1,30 @@
+<%= form_for ([@empresa,@informacion_empresa,@item_de_info])  do |f| %>
+  <% if @item_de_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_de_info.errors.count, "error") %> prohibited this item_de_info from being saved:</h2>
+
+      <ul>
+      <% @item_de_info.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :título %><br>
+    <%= f.text_field :título %>
+  </div>
+  <div class="field">
+    <%= f.label :descripción %><br>
+    <%= f.text_field :descripción %>
+  </div>
+
+    <div class="field">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+        </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

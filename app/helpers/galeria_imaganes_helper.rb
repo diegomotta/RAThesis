@@ -1,0 +1,2 @@
+module GaleriaImaganesHelper
+end

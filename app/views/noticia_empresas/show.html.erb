@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @noticia_empresa.titulo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @noticia_empresa.descripcion %>
+</p>
+<p>
+  <strong>Imagen:</strong>
+  <td><%= image_tag @noticia_empresa.image.url(:thumb) %></td>
+</p>
+<p>
+  <strong>Empresa:</strong>
+  <%= @noticia_empresa.empresa %>
+</p>
+
+<%= link_to 'Edit', edit_empresa_noticia_empresa_path(@empresa,@noticia_empresa) %> |
+<%= link_to 'Back',  empresa_noticia_empresas_path %>

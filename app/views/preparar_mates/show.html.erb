@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Título:</strong>
+  <%= @preparar_mate.título %>
+</p>
+
+<p>
+  <strong>Descrición:</strong>
+  <%= @preparar_mate.descrición %>
+</p>
+
+<%= link_to 'Edit', edit_empresa_producto_preparar_mate_path(@empresa,@producto,@preparar_mate) %> |
+<%= link_to 'Back', empresa_producto_preparar_mates_path %>

@@ -1,0 +1,36 @@
+<h1>Listing item_productos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Marca</th>
+      <th>Tipo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @producto.item_productos.empty? == false%>
+    <% @item_productos.each do |item_producto| %>
+      <tr>
+        <td><%= item_producto.marca %></td>
+        <td><%= item_producto.tipo %></td>
+        <td><%= image_tag item_producto.image.url(:thumb) %></td>
+        <td><%= link_to 'Show',  empresa_producto_item_producto_path(@empresa,@producto,item_producto) %></td>
+        <td><%= link_to 'Edit', [:edit, @empresa,@producto,item_producto]%></td>     
+         <td><%= link_to 'Destroy',empresa_producto_item_producto_path(@empresa,@producto,item_producto), method: :delete, data: { confirm: 'Are you sure?' } %></td>  
+         <td><%= link_to 'Galeria de imagenes', empresa_producto_item_producto_galeria_imagenes_path(@empresa,@producto,item_producto)%></td>     
+          <td><%= link_to 'videos de productos', empresa_producto_item_producto_videos_productos_path(@empresa,@producto,item_producto)%></td>       
+          <td><%= link_to 'comentarios', empresa_producto_item_producto_opinions_path(@empresa,@producto,item_producto)%></td>    
+          <td><%= link_to 'Detalles', empresa_producto_item_producto_detalles_path(@empresa,@producto,item_producto)%></td>  
+      </tr>
+    <% end %>
+   <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item producto', new_empresa_producto_item_producto_path %>
+<%= link_to 'Back Productos' , empresa_productos_path%>
+<%= link_to 'Inicio', empresas_path%>

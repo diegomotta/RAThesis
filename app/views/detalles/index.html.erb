@@ -1,0 +1,53 @@
+<h1>Listing detalles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descripcion</th>
+      <th>Elaboracion</th>
+      <th>Presentacion</th>
+      <th>Packaging</th>
+      <th>Origen</th>
+      <th>Secanza</th>
+      <th>Caracteristica</th>
+      <th colspan="3"></th>
+    </tr>
+    <tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @item_producto.detalles.empty? == false%>
+    <% @detalles.each do |detalle| %>
+      <tr>
+        <td><%= detalle.descripción %></td>
+        <td><%= detalle.elaboración %></td>
+        <td><%= detalle.presentación %></td>
+        <td><%= detalle.packaging %></td>
+        <td><%= detalle.origen %></td>
+        <td><%= detalle.secanza %></td>
+        <td><%= detalle.característica %></td>
+
+      </tr>
+      <td>
+        <%= link_to 'Show', empresa_producto_item_producto_detalle_path(@empresa,@producto,@item_producto,detalle) %>
+        <%= link_to 'Edit', [:edit, @empresa,@producto,@item_producto,detalle]%>
+        <%= link_to 'Destroy', empresa_producto_item_producto_detalle_path(@empresa,@producto,@item_producto,detalle), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Propiedades específicas',empresa_producto_item_producto_detalle_prop_especificas_path(@empresa,@producto,@item_producto,detalle)%>
+      </td>  
+    <% end %>
+   <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Detalle', new_empresa_producto_item_producto_detalle_path %>
+<%= link_to 'Back Items productos' , empresa_producto_item_productos_path%>
+<%= link_to 'Inicio', empresas_path%>
+
+

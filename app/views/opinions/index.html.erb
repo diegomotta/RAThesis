@@ -1,0 +1,35 @@
+<h1>Listing opinions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Nacionalidad</th>
+      <th>Pais</th>
+      <th>Ciudad</th>
+      <th>Comentario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+ <% if @item_producto.opinions.empty? == false%>
+    <% @opinions.each do |opinion| %>
+      <tr>
+        <td><%= opinion.nombre %></td>
+        <td><%= opinion.nacionalidad %></td>
+        <td><%= opinion.pais %></td>
+        <td><%= opinion.ciudad %></td>
+        <td><%= opinion.comentario %></td>
+        <td><%= link_to 'Show', empresa_producto_item_producto_opinion_path(@empresa,@producto,@item_producto,opinion) %></td>
+        <td><%= link_to 'Edit', [:edit, @empresa,@producto,@item_producto,opinion]%></td>  
+        <td><%= link_to 'Destroy',empresa_producto_item_producto_opinion_path(@empresa,@producto,@item_producto,opinion), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table> 
+
+<%= link_to 'New Opinion', new_empresa_producto_item_producto_opinion_path %>
+<%= link_to 'Back Items productos' , empresa_producto_item_productos_path%>
+<%= link_to 'Inicio', empresas_path%>

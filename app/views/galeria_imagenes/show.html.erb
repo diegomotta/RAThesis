@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @galeria_imagene.titulo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @galeria_imagene.descripcion %>
+</p>
+
+<p>
+  <strong>Imagen:</strong>
+  <td><%= image_tag @galeria_imagene.image.url(:thumb) %></td>
+</p>
+
+<%= link_to 'Edit', edit_empresa_producto_item_producto_galeria_imagene_path(@empresa,@producto,@item_producto,@galeria_imagene) %> 
+<%= link_to 'Back',  empresa_producto_item_producto_galeria_imagenes_path %>
+
