@@ -46,7 +46,7 @@ class GaleriaImagenesController < ApplicationController
     @galeria_imagene = @item_producto.galeria_imagenes.create(galeria_imagene_params)
     respond_to do |format|
       if @galeria_imagene.save
-        format.html { redirect_to empresa_producto_item_producto_galeria_imagene_path(@empresa,@producto,@item_producto,@galeria_imagene), notice: 'Item producto was successfully created.' }
+        format.html { redirect_to empresa_producto_item_producto_galeria_imagenes_path, notice: 'Item producto was successfully created.' }
         format.json { render :show, status: :created, location: @galeria_imagene }
       else
         format.html { render :new }
@@ -64,7 +64,7 @@ class GaleriaImagenesController < ApplicationController
     @galeria_imagene = @item_producto.galeria_imagenes.find(params[:id])
     respond_to do |format|
       if @galeria_imagene.update(galeria_imagene_params)
-        format.html { redirect_to empresa_producto_item_producto_galeria_imagene_path(@empresa,@producto,@item_producto,@galeria_imagene), notice: 'Item producto was successfully updated.' }
+        format.html { redirect_to empresa_producto_item_producto_galeria_imagenes_path, notice: 'Item producto was successfully updated.' }
         format.json { render :show, status: :ok, location: @galeria_imagene }
       else
         format.html { render :edit }

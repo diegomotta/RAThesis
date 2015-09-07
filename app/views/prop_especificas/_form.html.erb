@@ -11,16 +11,30 @@
       </ul>
     </div>
   <% end %>
+<form class="form-horizontal" >
+    <fieldset>
+        <legend>Datos de Propiedad Específica</legend>
+        <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Propiedad:</label>
+          <div class="col-lg-10">
+            <%= f.text_field :item, class: "form-control", placeholder: "Propiedad"%>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Propiedad:</label>
+          <div class="col-lg-10">
+            <%= f.text_area :descripción, class: "form-control", placeholder: "Descripción"%>
+          </div>
+        </div>
+       <div class="col-lg-offset-4">
+              <div class="btn-group">
+                   <a><%= f.submit "Guardar", class: "btn btn-info btn-raised" %></a>  
+              </div>
+              <div class="btn-group">     
+                   <a><%= link_to "Volver", empresa_producto_item_producto_detalle_prop_especificas_path,class: "btn btn-info btn-raised" %></a>  
+              </div>
+        </div>
+</fieldset>
+</form>
 
-  <div class="field">
-    <%= f.label :item %><br>
-    <%= f.text_field :item %>
-  </div>
-  <div class="field">
-    <%= f.label :descripción %><br>
-    <%= f.text_field :descripción %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

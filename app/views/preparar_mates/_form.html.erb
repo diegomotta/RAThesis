@@ -1,27 +1,42 @@
+<%= form_for ([@empresa,@producto,@preparar_mate])  do |f| %>
+<% if @preparar_mate.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@preparar_mate.errors.count, "error") %> prohibited this preparar_mate from being saved:</h2>
 
-<%= form_for([@empresa,@producto,@preparar_mate]) do |f| %>
+  <ul>
+    <% @preparar_mate.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <% if @preparar_mate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@preparar_mate.errors.count, "error") %> prohibited this preparar_mate from being saved:</h2>
-
-      <ul>
-      <% @preparar_mate.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<form class="form-horizontal" >
+  <fieldset>
+    <legend>Datos de  Tip para Consumo</legend>
+ 
+    <div class="form-group">
+      <label for="" class="col-lg-2 control-label">Titulo:</label>
+      <div class="col-lg-10">
+        <%= f.text_field :título, class: "form-control", placeholder: "Título"%>
+      </div>
+    </div> 
+    
+    <div class="form-group">
+      <label for="" class="col-lg-2 control-label">Descripción:</label>
+      <div class="col-lg-10">
+        <%= f.text_area :descrición, class: "form-control", placeholder: "descripción"%>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :título %><br>
-    <%= f.text_field :título %>
-  </div>
-  <div class="field">
-    <%= f.label :descrición %><br>
-    <%= f.text_area :descrición %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+          
+<div class="col-lg-offset-4">
+    <div class="btn-group">
+      <a> <%= f.submit "Guardar", class: "btn btn-info btn-raised" %></a>
+    </div>
+    <div class="btn-group">     
+     <a> <%= link_to 'Volver', empresa_producto_preparar_mates_path,class: "btn btn-info btn-raised" %></a>
+   </div>
+  </div>             
+</fieldset>
+</form>
 <% end %>

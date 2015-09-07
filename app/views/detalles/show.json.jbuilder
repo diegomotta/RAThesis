@@ -1,1 +1,2 @@
-json.extract! @detalle, :id, :descripcion, :elaboracion, :presentacion, :origen, :secanza, :caracteristica, :created_at, :updated_at
+json.extract! @detalle, :id, :descripción, :elaboración, :presentación, :origen, :secanza, :característica, :created_at, :updated_at
+json.url detalle_url(@detalle, format: :json)

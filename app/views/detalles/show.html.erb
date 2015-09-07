@@ -1,34 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2 class="panel-title text-center">Detalles del Producto</h2>
+      </div>
 
-<p>
-  <strong>Descripción:</strong>
-  <%= @detalle.descripción %>
-</p>
+      <div class="panel-body">
+        <form class="form-horizontal" >
+          <legend>Datos de Detalles del Producto</legend>
+          <fieldset>
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Descripción:</label>
+              <div class="col-lg-10">
+                <input class="form-control" value=<%= @detalle.descripción%> disabled = true>
+              </div>
+            </div> 
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Elaboración:</label>
+              <div class="col-lg-10">
+                <input class="form-control" value=<%= @detalle.elaboración %> disabled = true>
+              </div>
+            </div>   
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Presentación:</label>
+              <div class="col-lg-10">
+                <input class="form-control" value=<%= @detalle.presentación%> disabled = true>
+              </div>
+            </div>   
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Origen:</label>
+              <div class="col-lg-10">
+                <input class="form-control" value=<%= @detalle.origen%> disabled = true>
+              </div>
+            </div>  
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Secanza:</label>
+              <div class="col-lg-10">
+                <input class="form-control" value=<%= @detalle.secanza%> disabled = true>
+              </div>
+            </div>  
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Característica:</label>
+              <div class="col-lg-10">
+                <input class="form-control" value=<%= @detalle.característica%> disabled = true>
+              </div>
+            </div>              
+            <div class="form-group">
+              <div class="col-lg-offset-5">
+                <%= link_to 'Volver',  empresa_producto_item_producto_detalles_path, class: "btn btn-info btn-raised" %>
+              </div>
+            </div>                                                                  
+          </fieldset>
+        </form>  
+      </div> 
+    </div>
+    </div>
+    </div>
 
-<p>
-  <strong>Elaboracion:</strong>
-  <%= @detalle.elaboración %>
-</p>
 
-<p>
-  <strong>Presentación:</strong>
-  <%= @detalle.presentación %>
-</p>
-
-<p>
-  <strong>Origen:</strong>
-  <%= @detalle.origen %>
-</p>
-
-<p>
-  <strong>Secanza:</strong>
-  <%= @detalle.secanza %>
-</p>
-
-<p>
-  <strong>Característica:</strong>
-  <%= @detalle.característica %>
-</p>
-
-<%= link_to 'Edit', edit_empresa_producto_item_producto_detalle_path(@empresa,@producto,@item_producto,@detalle) %> 
-<%= link_to 'Back',  empresa_producto_item_producto_detalles_path %>

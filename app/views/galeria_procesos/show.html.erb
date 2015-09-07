@@ -1,19 +1,42 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Título:</strong>
-  <%= @galeria_proceso.título %>
-</p>
+<div class="container">
+	<div class="col-lg-8 col-lg-offset-2">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h2 class="panel-title text-center">Proceso de Elaboración</h2>
+			</div>
 
-<p>
-  <strong>Descrición:</strong>
-  <%= @galeria_proceso.descrición %>
-</p>
+			<div class="panel-body">
+				<form class="form-horizontal" >
+					<legend>Datos de Item de Proceso de Elaboración</legend>
 
-<p>
-  <strong>Descrición:</strong>
- <%= @galeria_proceso.image.url(:thumb) %>
-</p>
+					<div class="form-group">
+						<label for="" class="col-lg-2 control-label">Título:</label>
+						<div class="col-lg-10">
+							<%=text_field_tag 'i', @galeria_proceso.título, :class =>"form-control",:disabled =>true%>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-lg-2 control-label">Descripción:</label>
+						<div class="col-lg-10">
+							<%= text_area_tag 'd', @galeria_proceso.descrición, :class =>"form-control", :disabled =>true %>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="" class="col-lg-2 control-label">Imagen:</label>
+						<div class="col-lg-10">
+							<%= image_tag @galeria_proceso.image.url(:thumb)%>
+						</div>
+					</div>   
 
-<%= link_to 'Edit', edit_empresa_producto_galeria_proceso_path(@empresa,@producto,@galeria_proceso) %> |
-<%= link_to 'Back', empresa_producto_galeria_procesos_path %>
+					<div class="panel-body text-center">
+						<div class="btn-group-vertical">
+							<a><%= link_to 'Volver',empresa_producto_galeria_procesos_path,:class => "btn btn-info btn-raised" %></a>                        
+						</div> 
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,5 +1,5 @@
 class UbicacionGeosController < ApplicationController
-  before_action :set_ubicacion_geo, only: [:show, :edit, :update, :destroy]
+
 
   # GET /ubicacion_geos
   # GET /ubicacion_geos.json
@@ -9,7 +9,7 @@ class UbicacionGeosController < ApplicationController
     @hash = Gmaps4rails.build_markers(@ubicacion_geos) do |ubicacion_geo, marker|
       marker.lat ubicacion_geo.latitude
       marker.lng ubicacion_geo.longitude
-      marker.infowindow ubicacion_geo.description
+      marker.infowindow ubicacion_geo.title
     end
   end
 
@@ -21,7 +21,7 @@ class UbicacionGeosController < ApplicationController
     @hash = Gmaps4rails.build_markers(@ubicacion_geo) do |ubicacion_geo, marker|
       marker.lat ubicacion_geo.latitude
       marker.lng ubicacion_geo.longitude
-      marker.infowindow ubicacion_geo.description
+      marker.infowindow ubicacion_geo.title
     end
   end
 
@@ -31,6 +31,15 @@ class UbicacionGeosController < ApplicationController
     @ubicacion_geo = @empresa.ubicacion_geos.new
   end
 
+  def mapComplet
+    @empresa = Empresa.find(params[:empresa_id])
+    @ubicacion_geos = @empresa.ubicacion_geos.all
+    @hash = Gmaps4rails.build_markers(@ubicacion_geos) do |ubicacion_geo, marker|
+      marker.lat ubicacion_geo.latitude
+      marker.lng ubicacion_geo.longitude
+      marker.title ubicacion_geo.title
+    end
+  end
   # GET /ubicacion_geos/1/edit
   def edit
     @empresa = Empresa.find(params[:empresa_id])
@@ -83,10 +92,7 @@ class UbicacionGeosController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_ubicacion_geo
-    @empresa = Empresa.find(params[:empresa_id])
-    @ubicacion_geo = @empresa.ubicacion_geos.find(params[:id]) 
-    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ubicacion_geo_params

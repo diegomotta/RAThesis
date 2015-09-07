@@ -1,36 +1,106 @@
-<h1>Listing item_productos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Marca</th>
-      <th>Tipo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+     <style type="text/css">
+     #table {
+     border-width: 0;
+     border-style: none;
+     border-color: #0000ff;
+     border-collapse: collapse;
+    }
+    #td
+    {
+     border-width: 0;
+     border-style: none;
+     border-color: #0000ff;
+     border-collapse: collapse;
+     padding: 0;
+     margin: 0;
+     width: 5px;
+     height: 5px;
+    }
+    #td.black { background-color: #000; }
+    #td.white { background-color: #fff; }
+    </style>
+ <div class="container">
+  <div class="col-md-10 col-lg-offset-1">
+    <div class="row">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title text-center" >Presentación del Productos</h2>
+        </div>   
+        <div class="col-lg-offset-5">
+          <div class="btn-group">
+            <a ><%= link_to "<button type='button'class='btn btn-info'>Nuevo</button>".html_safe, new_empresa_producto_item_producto_path %></a> 
+          </div>
+          <div class="btn-group">
+            <a ><%= link_to "<button type='button'class='btn btn-info'>Volver</button>".html_safe, empresa_producto_path(@empresa,@producto) %></a>  
+          </div>
+        </div>            
+        <div class="panel-body">
+          <table class="table table-striped "> 
+            <thead>
+              <tr class="info">
+               <th class="text-center"><h5><b>Marca</b></h5></th>
+               <th class="text-center"><h5><b>Tipo</b></h5></th>
+               <th class="text-center"><h5><b>Imagen</b></h5></th>
+               <th class="text-center"><h5><b>Codigo QR</b></h5></th>
+               <th class="text-center"><h5><b>Acciones</b></h5></th>
+             </tr>
+           </thead>
+           <tbody>
+            <% if @producto.item_productos.empty? == false%>
+            <% @item_productos.each do |item_producto| %>
+            <div class="row">
+              <tr class="active">
+                <td><h6><%= item_producto.marca %></h6></td>
+                <td><h6><%= item_producto.tipo %></h6></td>
+                <td class="text-center"><h6><%= image_tag item_producto.image.url(:thumb) %></h6></td>
+                <%@item =item_producto %>
+                <%  qr_size = 3 %>
+                <%  @qr = nil %>
+                <%  @image = nil %>
+                <% @png = nil %>    
+                <%  while @qr == nil && qr_size < 10 %>
+                <%    begin %>
+                <%      @qr = RQRCode::QRCode.new(url_for([@empresa,@producto,@item]), :size => qr_size, :level => :l) %>
+                <%   rescue RQRCode::QRCodeRunTimeError => e %>
+                <%     qr_size += 1 %>
+                <%   end  %>
+                <% end %>
+                
 
-  <tbody>
-    <% if @producto.item_productos.empty? == false%>
-    <% @item_productos.each do |item_producto| %>
-      <tr>
-        <td><%= item_producto.marca %></td>
-        <td><%= item_producto.tipo %></td>
-        <td><%= image_tag item_producto.image.url(:thumb) %></td>
-        <td><%= link_to 'Show',  empresa_producto_item_producto_path(@empresa,@producto,item_producto) %></td>
-        <td><%= link_to 'Edit', [:edit, @empresa,@producto,item_producto]%></td>     
-         <td><%= link_to 'Destroy',empresa_producto_item_producto_path(@empresa,@producto,item_producto), method: :delete, data: { confirm: 'Are you sure?' } %></td>  
-         <td><%= link_to 'Galeria de imagenes', empresa_producto_item_producto_galeria_imagenes_path(@empresa,@producto,item_producto)%></td>     
-          <td><%= link_to 'videos de productos', empresa_producto_item_producto_videos_productos_path(@empresa,@producto,item_producto)%></td>       
-          <td><%= link_to 'comentarios', empresa_producto_item_producto_opinions_path(@empresa,@producto,item_producto)%></td>    
-          <td><%= link_to 'Detalles', empresa_producto_item_producto_detalles_path(@empresa,@producto,item_producto)%></td>  
-      </tr>
-    <% end %>
-   <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Item producto', new_empresa_producto_item_producto_path %>
-<%= link_to 'Back Productos' , empresa_productos_path%>
-<%= link_to 'Inicio', empresas_path%>
+                <td class="text-center">  <table id= 'table'>
+                  <% @qr.modules.each_index do |x| -%>
+                   <tr>
+                   <% @qr.modules.each_index do |y| -%>
+                    <% if @qr.dark?(x,y) -%>
+                    <td id='td' class="black"/>
+                    <% else %>
+                    <td id='td'class="white"/>
+                    <% end %>
+                   <% end %>
+                   </tr>
+                 <% end -%>
+                </table></td>
+               <td class="text-center"> 
+                <div class="btn-group-vertical">
+                <a><%= link_to 'Generar Codigo QR',  empresa_producto_item_producto_path(@empresa,@producto,item_producto),:class => "btn btn-info btn-raised" %></a>
+                 <a><%= link_to 'Editar', [:edit, @empresa,@producto,item_producto],:class => "btn btn-info btn-raised"%></a>     
+                 <a><%= link_to 'Eliminar',empresa_producto_item_producto_path(@empresa,@producto,item_producto), method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-info btn-raised"%></a>  
+                 <a><%= link_to 'Galeria de imagenes', empresa_producto_item_producto_galeria_imagenes_path(@empresa,@producto,item_producto),:class => "btn btn-info btn-raised"%></a>     
+                 <a><%= link_to 'videos de productos', empresa_producto_item_producto_videos_productos_path(@empresa,@producto,item_producto),:class => "btn btn-info btn-raised"%></a>       
+                 <a><%= link_to 'Comentarios', empresa_producto_item_producto_opinions_path(@empresa,@producto,item_producto),:class => "btn btn-info btn-raised"%></a>    
+                 <a><%= link_to 'Detalles', empresa_producto_item_producto_detalles_path(@empresa,@producto,item_producto),:class => "btn btn-info btn-raised"%></a> 
+               </div>
+             </td>
+           </tr>
+         </div>
+         <% end %>
+         <% end %>
+       </tbody>
+     </table>
+   </div>
+ </div>
+</div>
+</div>
+</div>
+</div>

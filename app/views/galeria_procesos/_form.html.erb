@@ -10,20 +10,33 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :título %><br>
-    <%= f.text_field :título %>
-  </div>
-  <div class="field">
-    <%= f.label :descrición %><br>
-    <%= f.text_area :descrición %>
-  </div>
-      <div class="field">
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-        </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <form class="form-horizontal" >
+    <fieldset>
+        <legend>Datos de la Imagen de Información Nutricional</legend>
+          <div class="form-group">
+            <label for="" class="col-lg-4 control-label">Título:</label>
+            <div class="col-lg-12">
+              <%= f.text_field :título, class: "form-control", placeholder: "Título"%>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-lg-4 control-label">Descripción:</label>
+            <div class="col-lg-12">
+              <%= f.text_area :descrición, class: "form-control", placeholder: "Descripción"%>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-lg-4 control-label">Imagen:</label>
+            <div class="col-lg-12">
+              <%= f.file_field :image,class: "form-control"%>
+            </div>
+          </div>
+          <div class="form-group">
+              <div class="col-lg-12 text-center">
+                  <%= f.submit "Guardar", class: "btn btn-info btn-raised" %>
+                  <%= link_to 'Volver', empresa_producto_galeria_procesos_path,class: "btn btn-info btn-raised" %>
+              </div>
+          </div>
+          </fieldset>
+  </form>
 <% end %>

@@ -13,5 +13,6 @@
 
       t.timestamps
     end
+    add_attachment :empresas, :image
   end
 end

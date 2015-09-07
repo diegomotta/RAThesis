@@ -1,30 +1,48 @@
-<h1>Listing preparar_mates</h1>
+<div class="container">
+  <div class="center-block">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2 class="panel-title text-center" >Tips para el Consumo</h2>
+      </div>
+      <div class="col-md-3 col-lg-offset-5">
+        <div class="btn-group">
+          <a ><%= link_to "<button type='button'class='btn btn-info'>Nuevo</button>".html_safe, new_empresa_producto_preparar_mate_path %></a> 
+        </div>
+        <div class="btn-group">
+          <a ><%= link_to "<button type='button'class='btn btn-info'>Volver</button>".html_safe, empresa_producto_path(@empresa,@producto)%></a>  
+        </div>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped"> 
+          <thead>                              
+            <tr class="info">
+             <th class="text-center"><h5><b>Titulo</b></h5></th>
+             <th class="text-center"><h5><b>Descripción</b></h5></th>
+             <th class="text-center"><h5><b>Acciones</b></h5></th>
+           </tr>
+         </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Título</th>
-      <th>Descrición</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <%if  @producto.preparar_mates.empty? == false %>
-    <% @preparar_mates.each do |preparar_mate| %>
-      <tr>
-        <td><%= preparar_mate.título %></td>
-        <td><%= preparar_mate.descrición %></td>
-        <td><%= link_to 'Show', empresa_producto_preparar_mate_path(@empresa,@producto,preparar_mate) %></td>
-        <td><%= link_to 'Edit', edit_empresa_producto_preparar_mate_path(@empresa,@producto,preparar_mate) %></td>
-        <td><%= link_to 'Destroy', empresa_producto_preparar_mate_path(@empresa,@producto,preparar_mate) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-        <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= link_to 'Imagenes', galeria_prep_mates_path %>
-<%= link_to 'New Preparar mate', new_empresa_producto_preparar_mate_path %>
-<%= link_to 'Atras', empresa_productos_path %>
+         <tbody>
+          <%if  @producto.preparar_mates.empty? == false %>
+          <% @preparar_mates.each do |preparar_mate| %>
+          <div class="row">
+            <tr class="active">                      
+              <td class="col-md-3"><h5><%= preparar_mate.título %></h5></td>
+              <td><h5><%= preparar_mate.descrición %></h5></td>
+              <td class="text-center">
+                <div class="btn-group-vertical">
+                  <!--<td><%= link_to 'Show', empresa_producto_preparar_mate_path(@empresa,@producto,preparar_mate) %></td>-->
+                  <a><%= link_to 'Editar', edit_empresa_producto_preparar_mate_path(@empresa,@producto,preparar_mate),:class => "btn btn-info btn-raised" %></a>
+                  <a><%= link_to 'Eliminar', empresa_producto_preparar_mate_path(@empresa,@producto,preparar_mate) , method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-info btn-raised" %></a>
+                </div>
+              </td>
+            </tr>
+          </div> 
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

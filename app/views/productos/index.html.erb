@@ -1,32 +1,48 @@
-<h1>Listing productos</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-lg-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h2 class="panel-title text-center" >Categoria de Productos</h2>
+                </div>
+                <div class="col-lg-offset-5">
+                    <div class="btn-group">
+                        <a ><%= link_to "<button type='button'class='btn btn-info'>Nuevo</button>".html_safe, new_empresa_producto_path%></a> 
+                    </div>
+                    <div class="btn-group">    
+                        <a ><%= link_to "<button type='button'class='btn btn-info'>Volver</button>".html_safe, empresa_path(@empresa)%></a>   
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped"> 
+                        <thead>                              
+                            <tr class="info">
+                              <th class="text-center">Categoria del Producto</th>
+                              <th class="text-center">Acciones</th>
+                            </tr>
+                      </thead>
+                     <% if @empresa.productos.empty? == false%>
+                        <% @productos.each do |producto| %>
+                            <div class="row">
+                              <tr class="active">
+                                <td><h6><%= producto.titulo %></h6></td>
+                                <td>
+                                    <div class="col-lg-offset-2">
+                                      <div class="btn-group">
+                                            <a><%= link_to 'Productos', empresa_producto_path(@empresa,producto), :class => "btn btn-info btn-raised"%></a>
+                                            <a><%= link_to 'Editar', edit_empresa_producto_path(@empresa,producto) ,:class => "btn btn-info btn-raised"%></a>
+                                            <a><%= link_to 'Eliminar',[producto.empresa, producto], method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-info btn-raised" %></a>
+                                        </div>
+                                      </div>
+                                </td>
+                              </tr>
+                            </div>
+                        <% end %>
+                    <% end %>
+                </table>  
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-     <% if @empresa.productos.empty? == false%>
-    <% @productos.each do |producto| %>
-      <tr>
-        <td><%= producto.titulo %></td>
-        <td><%= link_to 'Show', empresa_producto_path(@empresa,producto) %></td>
-        <td><%= link_to 'Edit', edit_empresa_producto_path(@empresa,producto) %></td>
-        <td><%= link_to 'Destroy', [producto.empresa, producto], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Información de productos', empresa_producto_item_productos_path(@empresa,producto)%></td>
-         <td><%= link_to 'Propiedades',  empresa_producto_prop_generals_path(@empresa,producto)%></td>
-         <td><%= link_to 'Procesos de elaboración',  empresa_producto_galeria_procesos_path(@empresa,producto)%></td>
-         <td><%= link_to 'Consumisión de la yerba mate',  empresa_producto_preparar_mates_path(@empresa,producto)%></td>
-      </tr>
-    <% end %>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Producto', new_empresa_producto_path %>
-<%= link_to 'Inicio', empresas_path%>

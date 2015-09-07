@@ -1,33 +1,51 @@
-<h1>Listing galeria_imagenes</h1>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Descripción</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% if @item_producto.galeria_imagenes.empty? == false%>
-    <% @galeria_imagenes.each do |galeria_imagene| %>
-      <tr>
-        <td><%= galeria_imagene.titulo %></td>
-        <td><%= galeria_imagene.descripcion %></td>
-        <td><%= image_tag galeria_imagene.image.url(:thumb) %></td>
-        <td><%= link_to 'Show',   empresa_producto_item_producto_galeria_imagene_path(@empresa,@producto,@item_producto,galeria_imagene) %></td>
-        <td><%= link_to 'Edit', [:edit, @empresa,@producto,@item_producto,galeria_imagene]%></td>     
-         <td><%= link_to 'Destroy',empresa_producto_item_producto_galeria_imagene_path(@empresa,@producto,@item_producto,galeria_imagene), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
-      </tr>
-    <% end %>
-   <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Galeria imagane', new_empresa_producto_item_producto_galeria_imagene_path %>
-<%= link_to 'Back Items productos' , empresa_producto_item_productos_path%>
-<%= link_to 'Inicio', empresas_path%>
+<div class="container">
+<div class="col-md-8 col-lg-offset-2">
+  <div class="row">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2 class="panel-title text-center" >Galeria de Imagenes del Producto</h2>
+      </div>   
+      <div class="col-lg-offset-5">
+        <div class="btn-group">
+          <a ><%= link_to "<button type='button'class='btn btn-info'>Nuevo</button>".html_safe, new_empresa_producto_item_producto_galeria_imagene_path  %></a> 
+        </div>
+        <div class="btn-group">
+          <a ><%= link_to "<button type='button'class='btn btn-info'>Volver</button>".html_safe, empresa_producto_item_productos_path %></a>  
+        </div>
+      </div>            
+          <% if @item_producto.galeria_imagenes.empty? == false%>
+      <div class="panel-body">
+        <table class="table table-striped "> 
+          <thead>
+            <tr class="info">
+             <th class="text-center"><h5><b>Título</b></h5></th>
+             <th class="text-center"><h5><b>Descripción</b></h5></th>
+             <th class="text-center"><h5><b>Imagen</b></h5></th>
+             <th class="text-center"><h5><b>Acciones</b></h5></th>
+           </tr>
+         </thead>
+         <tbody>
+          <% @galeria_imagenes.each do |galeria_imagene| %>
+          <div class="row">
+            <tr class="active">
+              <td><h5><%= galeria_imagene.titulo %></h5></td>
+              <td class="col-md-3"><h5><%= galeria_imagene.descripcion%></h5></td>
+              <td class="text-center"><h5><%= image_tag galeria_imagene.image.url(:thumb) %></h5></td>
+              <td class="text-center">
+                <div class="btn-group btn-group-vertical">
+                  <!--<a><%= link_to 'Show',   empresa_producto_item_producto_galeria_imagene_path(@empresa,@producto,@item_producto,galeria_imagene), :class => "btn btn-info" %></a>-->
+                  <a><%= link_to 'Editar', [:edit, @empresa,@producto,@item_producto,galeria_imagene], :class => "btn btn-info"%></a>     
+                  <a><%= link_to 'Eliminar',empresa_producto_item_producto_galeria_imagene_path(@empresa,@producto,@item_producto,galeria_imagene), method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-info" %></a> 
+                </div>
+              </td>
+            </tr>
+          </div>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>

@@ -40,7 +40,7 @@ class GaleriaProcesosController < ApplicationController
   def create
     @empresa = Empresa.find(params[:empresa_id])   
     @producto = @empresa.productos.find(params[:producto_id])
-    @galeria_procesos = @producto.galeria_procesos.build(galeria_proceso_params)
+    @galeria_proceso = @producto.galeria_procesos.build(galeria_proceso_params)
     respond_to do |format|
       if @galeria_proceso.save
         format.html { redirect_to empresa_producto_galeria_proceso_path(@empresa,@producto,@galeria_proceso), notice: 'Galeria proceso was successfully created.' }
@@ -57,7 +57,7 @@ class GaleriaProcesosController < ApplicationController
   def update
     @empresa = Empresa.find(params[:empresa_id])   
     @producto = @empresa.productos.find(params[:producto_id])
-    @galeria_procesos = @producto.galeria_procesos.find(params[:id])
+    @galeria_proceso = @producto.galeria_procesos.find(params[:id])
     respond_to do |format|
       if @galeria_proceso.update(galeria_proceso_params)
         format.html { redirect_to empresa_producto_galeria_procesos_path, notice: 'Galeria proceso was successfully updated.' }

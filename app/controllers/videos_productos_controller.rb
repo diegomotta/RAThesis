@@ -16,7 +16,7 @@ class VideosProductosController < ApplicationController
     @empresa = Empresa.find(params[:empresa_id])   
     @producto = @empresa.productos.find(params[:producto_id])
     @item_producto = @producto.item_productos.find(params[:item_producto_id])
-    @videos_productos= @item_producto.videos_productos.find(params[:id])
+    @videos_producto= @item_producto.videos_productos.find(params[:id])
   end
 
   # GET /videos_productos/new

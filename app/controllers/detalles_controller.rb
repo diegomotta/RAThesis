@@ -43,7 +43,7 @@ class DetallesController < ApplicationController
     @detalle = @item_producto.detalles.build(detalle_params)
     respond_to do |format|
       if @detalle.save
-        format.html { redirect_to empresa_producto_item_producto_detalle_path(@empresa,@producto,@item_producto,@detalle), notice: 'Item producto was successfully created.' }
+        format.html { redirect_to empresa_producto_item_producto_detalles_path, notice: 'Item producto was successfully created.' }
         format.json { render :show, status: :created, location: @detalle }
       else
         format.html { render :new }
@@ -61,7 +61,7 @@ class DetallesController < ApplicationController
     @detalle = @item_producto.detalles.find(params[:id])   
     respond_to do |format|
       if @detalle.update(detalle_params)
-        format.html { redirect_to empresa_producto_item_producto_detalle_path(@empresa,@producto,@item_producto,@detalle), notice: 'Item producto was successfully updated.' }
+        format.html { redirect_to empresa_producto_item_producto_detalles_path, notice: 'Item producto was successfully updated.' }
         format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }

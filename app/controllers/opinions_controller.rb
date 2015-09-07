@@ -32,7 +32,7 @@ class OpinionsController < ApplicationController
     @empresa = Empresa.find(params[:empresa_id])   
     @producto = @empresa.productos.find(params[:producto_id])
     @item_producto = @producto.item_productos.find(params[:item_producto_id])
-    @opinion = @item_productos.opinions.find(params[:id])    
+    @opinion = @item_producto.opinions.find(params[:id])    
   end
 
   # POST /opinions
@@ -44,7 +44,7 @@ class OpinionsController < ApplicationController
     @opinion = @item_producto.opinions.build(opinion_params)
     respond_to do |format|
       if @opinion.save
-        format.html { redirect_to empresa_producto_item_producto_opinion_path(@empresa,@producto,@item_producto,@opinion), notice: 'Item producto was successfully created.' }
+        format.html { redirect_to empresa_producto_item_producto_opinions_path, notice: 'Item producto was successfully created.' }
         format.json { render :show, status: :created, location: @opinion }
       else
         format.html { render :new }
@@ -62,7 +62,7 @@ class OpinionsController < ApplicationController
     @opinion = @item_producto.opinions.find(params[:id])
     respond_to do |format|
       if @opinion.update(opinion_params)
-        format.html { redirect_to empresa_producto_item_producto_opinion_path(@empresa,@producto,@item_producto,@opinion), notice: 'Item producto was successfully updated.' }
+        format.html { redirect_to empresa_producto_item_producto_opinions_path, notice: 'Item producto was successfully updated.' }
         format.json { render :show, status: :ok, location: @opinion }
       else
         format.html { render :edit }

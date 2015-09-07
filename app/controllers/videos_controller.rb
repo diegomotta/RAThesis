@@ -35,7 +35,7 @@ class VideosController < ApplicationController
     @video = @empresa.videos.create(video_params)
     respond_to do |format|
       if @video.save
-        format.html { redirect_to empresa_video_path(@empresa,@video), notice: 'Video was successfully created.' }
+        format.html { redirect_to empresa_videos_path, notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class VideosController < ApplicationController
     @video = @empresa.videos.find(params[:id]) 
     respond_to do |format|
       if @video.update(video_params)
-        format.html { redirect_to empresa_video_path(@empresa,@video), notice: 'Video was successfully updated.' }
+        format.html { redirect_to empresa_videos_path, notice: 'Video was successfully updated.' }
         format.json { render :show, status: :ok, location: @video }
       else
         format.html { render :edit }
@@ -67,7 +67,7 @@ class VideosController < ApplicationController
     @video = @empresa.videos.find(params[:id]) 
     @video.destroy
     respond_to do |format|
-      format.html { redirect_to empresa_videos_path(@empresa,@video), notice: 'Video was successfully destroyed.' }
+      format.html { redirect_to empresa_videos_path, notice: 'Video was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,5 +1,5 @@
 class ProductosController < ApplicationController
-  before_action :set_producto, only: [:show, :edit, :update, :destroy]
+
 
   # GET /productos
   # GET /productos.json
@@ -34,7 +34,7 @@ class ProductosController < ApplicationController
     @producto = @empresa.productos.new(producto_params)
     respond_to do |format|
       if @producto.save
-        format.html { redirect_to empresa_producto_path(@empresa,@producto), notice: 'Producto was successfully created.' }
+        format.html { redirect_to empresa_productos_path, notice: 'Producto was successfully created.' }
         format.json { render :show, status: :created, location: @producto }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class ProductosController < ApplicationController
     @producto = @empresa.productos.find(params[:id])
     respond_to do |format|
       if @producto.update(producto_params)
-        format.html { redirect_to empresa_producto_path(@empresa,@producto), notice: 'Producto was successfully updated.' }
+        format.html { redirect_to empresa_productos_path, notice: 'Producto was successfully updated.' }
         format.json { render :show, status: :ok, location: @producto }
       else
         format.html { render :edit }
@@ -66,17 +66,13 @@ class ProductosController < ApplicationController
     @producto = @empresa.productos.find(params[:id])
     @producto.destroy
     respond_to do |format|
-      format.html { redirect_to empresa_productos_path(@empresa,@producto), notice: 'Producto was successfully destroyed.' }
+      format.html { redirect_to empresa_productos_path, notice: 'Producto was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_producto
-       @empresa = Empresa.find(params[:empresa_id])
-       @producto = @empresa.productos.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def producto_params

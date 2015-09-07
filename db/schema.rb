@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602225226) do
+ActiveRecord::Schema.define(version: 20150804230915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,28 @@ ActiveRecord::Schema.define(version: 20150602225226) do
     t.text     "visión"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
+
+  create_table "estadisticas", force: true do |t|
+    t.string   "califproducto"
+    t.string   "precio"
+    t.string   "imagenempresareg"
+    t.string   "enteroprod"
+    t.string   "sabortoman"
+    t.string   "cuantoconsumo"
+    t.string   "justifprod"
+    t.string   "yerbamedicinal"
+    t.string   "otroproducto"
+    t.integer  "empresa_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "estadisticas", ["empresa_id"], name: "index_estadisticas_on_empresa_id", using: :btree
 
   create_table "galeria_imagenes", force: true do |t|
     t.string   "titulo"
@@ -94,6 +115,7 @@ ActiveRecord::Schema.define(version: 20150602225226) do
   create_table "galeria_prep_mates", force: true do |t|
     t.string   "título"
     t.text     "descrición"
+    t.integer  "producto_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
@@ -101,6 +123,8 @@ ActiveRecord::Schema.define(version: 20150602225226) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  add_index "galeria_prep_mates", ["producto_id"], name: "index_galeria_prep_mates_on_producto_id", using: :btree
 
   create_table "galeria_procesos", force: true do |t|
     t.string   "título"

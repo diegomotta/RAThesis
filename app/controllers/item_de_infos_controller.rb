@@ -40,7 +40,7 @@ class ItemDeInfosController < ApplicationController
     @item_de_info = @informacion_empresa.item_de_infos.create(informacion_empresa_params)
     respond_to do |format|
       if @item_de_info.save
-        format.html { redirect_to  empresa_informacion_empresa_item_de_info_path(@empresa,@informacion_empresa,@item_de_info), notice: 'Item de info was successfully created.' }
+        format.html { redirect_to  empresa_informacion_empresa_item_de_infos_path, notice: 'Item de info was successfully created.' }
         format.json { render :show, status: :created, location: @item_de_info }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class ItemDeInfosController < ApplicationController
     @item_de_info = @informacion_empresa.item_de_infos.find(params[:id])
     respond_to do |format|
       if @item_de_info.update(item_de_info_params)
-        format.html { redirect_to empresa_informacion_empresa_item_de_info_path(@empresa,@informacion_empresa,@item_de_info), notice: 'Item de info was successfully updated.' }
+        format.html { redirect_to empresa_informacion_empresa_item_de_infos_path, notice: 'Item de info was successfully updated.' }
         format.json { render :show, status: :ok, location: @item_de_info }
       else
         format.html { render :edit }

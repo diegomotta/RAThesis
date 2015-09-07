@@ -1,6 +1,17 @@
-<h1>Editing galeria_prop</h1>
+<div class="container">
+<div class="row">
+    <div class="col-lg-7 col-lg-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title text-center">Editar Imagen para Información Nutricional</h2>
+            </div>
+                
+            <div class="panel-body">
+				<%= render 'form' %>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', empresa_producto_prop_general_galeria_prop_path(@empresa,@producto,@prop_general,galeria_prop) %> |
-<%= link_to 'Back', empresa_producto_prop_general_galeria_props_path %>

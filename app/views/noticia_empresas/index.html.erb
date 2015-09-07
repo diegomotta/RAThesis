@@ -1,33 +1,48 @@
-<h1>Listing noticia</h1>
+<div class="container">
+    <div class="center-block">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title text-center" >Gestor de Noticias</h2>
+            </div>
+            <div class="col-md-3 col-lg-offset-5">
+                <div class="btn-group">
+                    <a ><%= link_to "<button type='button'class='btn btn-info'>Nuevo</button>".html_safe, new_empresa_noticia_empresa_path %></a> 
+                </div>
+                <div class="btn-group">
+                    <a ><%= link_to "<button type='button'class='btn btn-info'>Volver</button>".html_safe, empresa_path(@empresa)%></a>  
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped"> 
+                    <thead>                              
+                        <tr class="info">
+                           <th class="text-center"><h5><b>Titulo</b></h5></th>
+                           <th class="text-center"><h5><b>Descripcion</b></h5></th>
+                           <th class="text-center"><h5><b>Imagen</b></h5></th>
+                           <th class="text-center"><h5><b>Acciones</b></h5></th>
+                        </tr>
+                    </thead>
+                <% if @empresa.noticia_empresas.empty? == false %>
+                    <% @noticia_empresas.each do |noticia_empresa| %>
+                        <div class="row">
+                            <tr class="active">
+                                <td class="text-center"><h5><%= noticia_empresa.titulo %></h5></td>
+                                <td><h5><%= noticia_empresa.descripcion %></h5></td>
+                                <td class="text-center"><h5><%= image_tag noticia_empresa.image.url(:thumb) %></h5></td>
+                                <td class="text-center">
+                                    <div class="btn-group-vertical">
+                                        <!--<a><%= link_to 'Show', empresa_noticia_empresa_path(@empresa,noticia_empresa), :class => "btn btn-info btn-raised"%></a>-->
+                                        <a><%= link_to 'Editar', edit_empresa_noticia_empresa_path(@empresa,noticia_empresa),:class => "btn btn-info btn-raised"%></a>
+                                        <a><%= link_to 'Eliminar',[noticia_empresa.empresa, noticia_empresa], method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-info btn-raised" %></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </div>
+                    <%end%>
+                <% end %>
+                </table>   
+            </div>                     
+        </div>
+    </div>
+</div>        
 
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Descripcion</th>
-      <th>Empresa</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% if @empresa.noticia_empresas.empty? == false %>
-    <% @noticia_empresas.each do |noticia_empresa| %>
-      <tr>
-        <td><%= noticia_empresa.titulo %></td>
-        <td><%= noticia_empresa.descripcion %></td>
-        <td><%= image_tag noticia_empresa.image.url(:thumb) %></td>
-        <td><%= noticia_empresa.empresa %></td>
-        <td><%= link_to 'Show', empresa_noticia_empresa_path(@empresa,noticia_empresa) %></td>
-        <td><%= link_to 'Edit', edit_empresa_noticia_empresa_path(@empresa,noticia_empresa)%></td>
-        <td><%= link_to 'Destroy',[noticia_empresa.empresa, noticia_empresa], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-        <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Noticia', new_empresa_noticia_empresa_path %>
-<%= link_to 'Back', empresas_path%>

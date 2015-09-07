@@ -1,5 +1,4 @@
 class NoticiaEmpresasController < ApplicationController
-    before_action :set_noticia_empresa, only: [:show, :edit, :update, :destroy]
 
 
   # GET /noticia
@@ -35,7 +34,7 @@ class NoticiaEmpresasController < ApplicationController
   @noticia_empresa = @empresa.noticia_empresas.create(noticia_empresa_params)
     respond_to do |format|
       if @noticia_empresa.save
-        format.html { redirect_to empresa_noticia_empresa_path(@empresa,@noticia_empresa), notice: 'Noticium was successfully created.' }
+        format.html { redirect_to empresa_noticia_empresas_path(@empresa,@noticia_empresa), notice: 'Noticium was successfully created.' }
         format.json { render :show, status: :created, location: @noticia_empresa }
       else
         format.html { render :new }
@@ -51,7 +50,7 @@ class NoticiaEmpresasController < ApplicationController
     @noticia_empresa = @empresa.noticia_empresas.find(params[:id])
     respond_to do |format|
       if @noticia_empresa.update(noticia_empresa_params)
-        format.html { redirect_to empresa_noticia_empresa_path(@empresa,@noticia_empresa), notice: 'Noticium was successfully updated.' }
+        format.html { redirect_to empresa_noticia_empresas_path(@empresa,@noticia_empresa), notice: 'Noticium was successfully updated.' }
         format.json { render :show, status: :ok, location: @noticia_empresa }
       else
         format.html { render :edit }
@@ -73,13 +72,6 @@ class NoticiaEmpresasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_noticia_empresa
-      @empresa = Empresa.find(params[:empresa_id])
-      @noticia_empresa = @empresa.noticia_empresas.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
     def noticia_empresa_params
       params.require(:noticia_empresa).permit(:titulo, :descripcion,:image, :empresa_id)
     end

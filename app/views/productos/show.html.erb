@@ -1,10 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title text-center">Gestión de Categoria del Producto</h2>
+            </div>
 
-<p>
-  <strong>Título:</strong>
-  <%= @producto.titulo %>
-</p>
+            <div class="panel-body">
+                <form class="form-horizontal" >
+                 <legend>Datos de Categoria</legend>
+                 <fieldset>
+                    <div class="form-group">
+                        <label for="" class="col-lg-2 control-label">Nombre:</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" value=<%= @producto.titulo %> disabled = true>
+                        </div>
+                    </div>                                
+                </fieldset>
+            </form>  
+        </div> 
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-body text-center">
+            <div class="btn-group-vertical">
+                <a href="javascript:void(0)" ><%= link_to 'Información de productos', empresa_producto_item_productos_path(@empresa,@producto),:class => "btn btn-info btn-raised" %></a>
+                <a href="javascript:void(0)" ><%= link_to 'Propiedades',  empresa_producto_prop_generals_path(@empresa,@producto) ,:class => "btn btn-info btn-raised" %></a>
+                <a href="javascript:void(0)" ><%=link_to 'Preparación para el consumo',  empresa_producto_galeria_prep_mates_path(@empresa,@producto),:class => "btn btn-info btn-raised" %></a>
+            </div>
+            <div class="btn-group-vertical">
+                <a href="javascript:void(0)" ><%= link_to 'Procesos de elaboración',  empresa_producto_galeria_procesos_path(@empresa,@producto) ,:class => "btn btn-info btn-raised" %></a>        
+                <a href="javascript:void(0)" ><%= link_to 'Tips para el consumo',  empresa_producto_preparar_mates_path(@empresa,@producto),:class => "btn btn-info btn-raised" %></a>
+                <a href="javascript:void(0)" ><%=link_to 'Volver',  empresa_productos_path,:class => "btn btn-info btn-raised" %></a>                     
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
 
 
-<%= link_to 'Edit', edit_empresa_producto_path(@empresa,@producto) %> 
-<%= link_to 'Back', empresa_productos_path %>

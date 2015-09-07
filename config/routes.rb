@@ -1,21 +1,21 @@
 Rails.application.routes.draw do
   
-  
-
-
-
-  resources :galeria_prep_mates
-
 resources :audios
 root :to => "empresas#index"
 resources :empresas do
-  resources :ubicacion_geos
+  resources :ubicacion_geos do
+    collection do
+        get 'mapComplet'
+    end
+  end
+  resources :estadisticas
   resources :noticia_empresas
   resources :videos
   resources :consulta_clientes
   resources :productos do
     resources :galeria_procesos
     resources :preparar_mates
+    resources :galeria_prep_mates
     resources :prop_generals do
       resources :prop_general_items
       resources :galeria_props

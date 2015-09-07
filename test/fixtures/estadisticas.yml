@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  califproducto: MyString
+  precio: MyString
+  disponibleproducto: MyString
+  otrosabor: MyString
+  imagenempresareg: MyString
+  yerbamedicinal: MyString
+  sabortoman: MyString
+  saboredad: MyString
+  cambiodeproducto: MyString
+  enteroprod: MyString
+  cuantoconsumo: MyString
+  otroproducto: MyString
+  justifprod: MyText
+  recomendacion: MyText
+
+two:
+  califproducto: MyString
+  precio: MyString
+  disponibleproducto: MyString
+  otrosabor: MyString
+  imagenempresareg: MyString
+  yerbamedicinal: MyString
+  sabortoman: MyString
+  saboredad: MyString
+  cambiodeproducto: MyString
+  enteroprod: MyString
+  cuantoconsumo: MyString
+  otroproducto: MyString
+  justifprod: MyText
+  recomendacion: MyText

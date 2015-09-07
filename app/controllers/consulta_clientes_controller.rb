@@ -37,7 +37,7 @@ class ConsultaClientesController < ApplicationController
   @consulta_cliente =@empresa.consulta_clientes.build(consulta_cliente_params)
   respond_to do |format|
       if @empresa.save
-        format.html { redirect_to empresa_consulta_cliente_path(@empresa,@consulta_cliente), notice: 'Noticium was successfully created.' }
+        format.html { redirect_to empresa_consulta_clientes_path, notice: 'Noticium was successfully created.' }
         format.json { render :show, status: :created, location: @consulta_cliente }
       else
         format.html { render :new }
@@ -53,7 +53,7 @@ class ConsultaClientesController < ApplicationController
     @consulta_cliente = @empresa.consulta_clientes.find(params[:id])    
     respond_to do |format|
       if @consulta_cliente.update(consulta_cliente_params)
-        format.html { redirect_to empresa_consulta_cliente_path(@empresa,@consulta_cliente), notice: 'Noticium was successfully updated.' }
+        format.html { redirect_to empresa_consulta_clientes_path, notice: 'Noticium was successfully updated.' }
         format.json { render :show, status: :ok, location: @consulta_cliente }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class ConsultaClientesController < ApplicationController
     @consulta_cliente = @empresa.consulta_clientes.find(params[:id])    
     @consulta_cliente.destroy
     respond_to do |format|
-      format.html { redirect_to empresa_consulta_cliente_path(@empresa,@consulta_cliente), notice: 'Noticium was successfully destroyed.' }
+      format.html { redirect_to empresa_consulta_clientes_path, notice: 'Noticium was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

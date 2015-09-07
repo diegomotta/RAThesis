@@ -36,7 +36,7 @@ class InformacionEmpresasController < ApplicationController
   @informacion_empresa = @empresa.informacion_empresas.create(informacion_empresa_params)
     respond_to do |format|
       if @informacion_empresa.save
-        format.html { redirect_to empresa_informacion_empresa_path(@empresa,@informacion_empresa), notice: 'Informacion empresa was successfully created.' }
+        format.html { redirect_to empresa_informacion_empresas_path, notice: 'Informacion empresa was successfully created.' }
         format.json { render :show, status: :created, location: @informacion_empresa }
       else
         format.html { render :new }
@@ -52,7 +52,7 @@ class InformacionEmpresasController < ApplicationController
     @informacion_empresa = @empresa.informacion_empresas.find(params[:id])
     respond_to do |format|
       if @informacion_empresa.update(informacion_empresa_params)
-        format.html { redirect_to empresa_informacion_empresa_path(@empresa,@informacion_empresa), notice: 'Informacion empresa was successfully updated.' }
+        format.html { redirect_to empresa_informacion_empresas_path, notice: 'Informacion empresa was successfully updated.' }
         format.json { render :show, status: :ok, location: @informacion_empresa }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class InformacionEmpresasController < ApplicationController
     @informacion_empresa = @empresa.informacion_empresas.find(params[:id])
     @informacion_empresa.destroy
     respond_to do |format|
-      format.html { redirect_to empresa_informacion_empresas_path(@empresa,@informacion_empresa), notice: 'Informacion empresa was successfully destroyed.' }
+      format.html { redirect_to empresa_informacion_empresas_path, notice: 'Informacion empresa was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,30 +1,52 @@
-<h1>Listing prop_especificas</h1>
+ <div class="container">
+  <div class="col-md-10 col-lg-offset-1">
+    <div class="row">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title text-center" >Propiedades específicas</h2>
+        </div>   
+        <div class="col-lg-offset-5">
+          <div class="btn-group">
+            <a ><%= link_to "<button type='button'class='btn btn-info'>Nuevo</button>".html_safe, new_empresa_producto_item_producto_detalle_prop_especifica_path %></a> 
+          </div>
+          <div class="btn-group">
+            <a ><%= link_to "<button type='button'class='btn btn-info'>Volver</button>".html_safe, empresa_producto_item_producto_detalles_path%></a>  
+          </div>
+        </div>            
+        <div class="panel-body">
+          <table class="table table-striped "> 
+            <thead>
+              <tr class="info">
+               <th class="text-center"><h5><b>Item</b></h5></th>
+               <th class="text-center"><h5><b>Descripción</b></h5></th>
+               <th class="text-center"><h5><b>Acciones</b></h5></th>
+             </tr>
+           </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Item</th>
-      <th>Descripción</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+           <tbody>
+            <% if @detalle.prop_especificas.empty? == false%>
+            <% @prop_especificas.each do |prop_especifica| %>
+            <div class="row">
+              <tr class="active">
 
-  <tbody>
-  <% if @detalle.prop_especificas.empty? == false%>
-    <% @prop_especificas.each do |prop_especifica| %>
-      <tr>
-        <td><%= prop_especifica.item %></td>
-        <td><%= prop_especifica.descripción %></td>
-        <td><%= link_to 'Show', empresa_producto_item_producto_detalle_prop_especifica_path(@empresa,@producto,@item_producto,@detalle,prop_especifica) %></td>
-        <td><%= link_to 'Edit', [:edit, @empresa,@producto,@item_producto,@detalle,prop_especifica]%></td>
-        <td><%= link_to 'Destroy', empresa_producto_item_producto_detalle_prop_especifica_path(@empresa,@producto,@item_producto,@detalle,prop_especifica), method: :delete, data: { confirm: 'Are you sure?' }  %></td>
-      </tr>
-    <% end %>
-    <% end %>
-  </tbody>
-</table>
+               <td><h6><%= prop_especifica.item %></h6></td>
+               <td><h6><%= prop_especifica.descripción %></h6></td>
+               <td class="text-center"> 
+                <div class="btn-group-vertical">
+                <!--<a><%= link_to 'Show', empresa_producto_item_producto_detalle_prop_especifica_path(@empresa,@producto,@item_producto,@detalle,prop_especifica),:class => "btn btn-info btn-raised" %></a>-->
+                  <a><%= link_to 'Editar', [:edit, @empresa,@producto,@item_producto,@detalle,prop_especifica],:class => "btn btn-info btn-raised"%></a>
+                  <a><%= link_to 'Eliminar', empresa_producto_item_producto_detalle_prop_especifica_path(@empresa,@producto,@item_producto,@detalle,prop_especifica), method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-info btn-raised" %></a>
+                </div>
+              </td>
+            </tr>
+          </div>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
 
-<br>
-
-<%= link_to 'Nuevo', new_empresa_producto_item_producto_detalle_prop_especifica_path %>
-<%= link_to 'Volver', empresa_producto_item_producto_detalles_path %>

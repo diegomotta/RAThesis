@@ -10,22 +10,38 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :marca %><br>
-    <%= f.text_field :marca %>
-  </div>
-  <div class="field">
-    <%= f.label :tipo %><br>
-    <%= f.text_field :tipo %>
-  </div>
-
-    <div class="field">
-      <%= f.label :image %>
-      <%= f.file_field :image %>
+<form class="form-horizontal" >
+    <fieldset>
+        <legend>Datos de Presentación del Producto</legend>
+        <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Marca:</label>
+          <div class="col-lg-10">
+            <%= f.text_field :marca, class: "form-control", placeholder: "Marca"%>
+          </div>
         </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+        <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Tipo:</label>
+          <div class="col-lg-10">
+            <%= f.text_field :tipo, class: "form-control", placeholder: "Tipo"%>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Imagen:</label>
+          <div class="col-lg-10">
+            <%= f.file_field :image, class: "form-control"%>
+          </div>
+        </div>
+
+       <div class="col-lg-offset-4">
+              <div class="btn-group">
+                   <a><%= f.submit "Guardar", class: "btn btn-info btn-raised" %></a>  
+              </div>
+              <div class="btn-group">     
+                   <a><%= link_to "Volver", empresa_producto_item_productos_path,class: "btn btn-info btn-raised" %></a>  
+              </div>
+        </div>
+</fieldset>
+</form>
 <% end %>

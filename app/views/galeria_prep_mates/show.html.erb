@@ -1,18 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="col-lg-8 col-lg-offset-2">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h2 class="panel-title text-center">Tip para Preparación para el Consumo</h2>
+			</div>
+			
+			<div class="panel-body">
+				<form class="form-horizontal" >
+					<legend>Datos de Tip para Preparación para el Consumo</legend>
+					<fieldset>
+						<div class="form-group">
+							<label for="" class="col-lg-2 control-label">Título:</label>
+							<div class="col-lg-10">
+								<input class="form-control" disabled = true value=<%= @galeria_prep_mate.título %> >
+							</div>
+						</div>    
+						<div class="form-group">
+							<label for="" class="col-lg-2 control-label">Descripción:</label>
+							<div class="col-lg-10">
+								<input class="form-control" disabled=true value=<%= @galeria_prep_mate.descrición %>>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-lg-2 control-label">Imagen:</label>
+							<div class="col-lg-10">
+								<div>
+									<%= image_tag @galeria_prep_mate.image.url(:thumb) %>
+								</div>
+						    </div>  
+						<div class="panel-body text-center">
+							<div class="btn-group-vertical">
+								<a href="javascript:void(0)" ><%= link_to 'Volver',empresa_producto_galeria_prep_mates_path,:class => "btn btn-info btn-raised" %></a>                        
+							</div> 
+						</div>                                                     
+					</fieldset>
+				</form>  
+			</div>
+		</div>
+	</div>
+</div>
 
-<p>
-  <strong>Título:</strong>
-  <%= @galeria_prep_mate.título %>
-</p>
 
-<p>
-  <strong>Descrición:</strong>
-  <%= @galeria_prep_mate.descrición %>
-</p>
-<p>
-  <strong>Imagen:</strong>
- <td><%= @galeria_prep_mate.image.url(:thumb) %></td>
-</p>
-
-<%= link_to 'Edit', edit_galeria_prep_mate_path(@galeria_prep_mate) %> |
-<%= link_to 'Back', galeria_prep_mates_path %>

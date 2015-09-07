@@ -1,34 +1,57 @@
-<h1>Listing consulta_clientes</h1>
+<div class="container">
+<div class="col-md-10 col-lg-offset-1" >
+		<div class="row">
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Correo</th>
-      <th>Telefono</th>
-      <th>Descripcion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h2 class="panel-title text-center" >Consulta de Clientes</h2>
+				</div>
+				<div class="col-md-3 col-lg-offset-5">
+					<div class="btn-group">
+						<a ><%= link_to "<button type='button'class='btn btn-info'>Nuevo</button>".html_safe, new_empresa_consulta_cliente_path%></a> 
+					</div>
+					<div class="btn-group">    
+						<a ><%= link_to "<button type='button'class='btn btn-info'>Volver</button>".html_safe, empresa_path(@empresa)%></a>   
+					</div>
+				</div>
 
-  <tbody>
-  <% if @empresa.consulta_clientes.empty? == false %>
-    <% @consulta_clientes.each do |consulta_cliente| %>
-      <tr>
-        <td><%= consulta_cliente.nombre %></td>
-        <td><%= consulta_cliente.correo%></td>
-        <td><%= consulta_cliente.telefono%></td>
-        <td><%= consulta_cliente.descripcion%></td>
-        <td><%= link_to 'Show', empresa_consulta_cliente_path(@empresa,consulta_cliente) %></td>
-        <td><%= link_to 'Edit', [:edit, @empresa,consulta_cliente]%></td>
-        <td><%= link_to 'Destroy',[consulta_cliente.empresa, consulta_cliente], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<div class="panel-body">
+					<table class="table table-striped "> 
+						<thead>
+							<tr class="info ">
+								<th class="text-center"><h5><b>Nombre</b></h5></th>
+								<th class="text-center"><h5><b>Correo</b></h5></th>
+								<th class="text-center"><h5><b>Telefono</b></h5></th>
+								<th class="text-center"><h5><b>Descripcion</b></h5></th>
+								<th class="text-center"><h5><b>Acciones</b></h5></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% if @empresa.consulta_clientes.empty? == false %>
+							<% @consulta_clientes.each do |consulta_cliente| %>
+							<div class="row">
+								<tr class="active">
+									<td><h5><%= consulta_cliente.nombre %></h5></td>
+									<td><h5><%= consulta_cliente.correo%></h5></td>
+									<td><h5><%= consulta_cliente.telefono%></h5></td>
+									<td><h5><%= consulta_cliente.descripcion%></h5></td>
+									<td class="text-center">
+										<div class="btn-group btn-group-vertical">
+											<a><%= link_to 'Ver', empresa_consulta_cliente_path(@empresa,consulta_cliente),:class => "btn btn-info"%></a>
+											<a><%= link_to 'Editar', [:edit, @empresa,consulta_cliente],:class => "btn btn-info" %></a>
+											<a><%= link_to 'Eliminar',[consulta_cliente.empresa, consulta_cliente], method: :delete, data: { confirm: 'Are you sure?'} ,:class => "btn btn-info" %></a>
+										</div>                        
+									</td>                                 
+								</tr>
+							</div>
+							<% end %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>  
+			</div>
+		</div>
+	</div>
+</div>
 
-      </tr>
-    <% end %>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Consulta cliente', new_empresa_consulta_cliente_path %>
+<!--<%= link_to 'New Consulta cliente', new_empresa_consulta_cliente_path %>-->

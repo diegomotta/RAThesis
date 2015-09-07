@@ -1,36 +1,50 @@
-<h1>Listing videos</h1>
+<div class="container">
+	<div class="row">
+	    <div class="panel panel-info">
+	        <div class="panel-heading">
+	            <h2 class="panel-title" >Videos</h2>
+	        </div>
+	        <div class="col-md-3 col-lg-offset-5">
+	          <div class="btn-group">
+	                <a ><%= link_to "<button type='button'class='btn btn-info'>Nuevo</button>".html_safe, new_empresa_video_path %></a>       
+	           </div>
+	           <div class="btn-group">
+	           		<a ><%= link_to "<button type='button'class='btn btn-info'>Volver</button>".html_safe, empresa_path(@empresa)%></a> 
+	           </div>
+	        </div>
+	        <div class="panel-body">
+	          <table class="table table-striped "> 
+	             <thead>
+	                <tr class="info">
+	                   <th class="text-center"><h5><b>Título</b></h5></th>
+	                   <th class="text-center"><h5><b>Descripción</b></h5></th>
+	                   <th class="text-center"><h5><b>Video</b></h5></th>
+	                   <th class="text-center"><h5><b>Acciones</b></h5></th>
+	                </tr>
+	             </thead>    
+	             <% if @empresa.videos.empty? == false%>
+	             <% @videos.each do |video| %>
+	                  <div class="row">
+	                        <tr class="active">
+	                          <td><h5><%= video.titulo %></h5></td>
+	                          <td><h5><%= video.descripcion %></h5></td>
+	                          <td class="text-center"><h5><% @video_id = (/([\w-]{11})/.match(video.url)).to_s %>
+	                                    <%@embed_code = "<iframe width='440' height='260' src='http://www.youtube.com/embed/#{@video_id}' frameborder='0' allowfullscreen></iframe>"%>
+	                                    <%= raw(@embed_code) %></h5></td>
+	                            <td>
+	                            <div class="btn-group btn-group-vertical">
 
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Url</th>
-      <th>Descripcion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-     <% if @empresa.videos.empty? == false%>
-     <% @videos.each do |video| %>
-     <tr>
-        <td><%= video.titulo %></td>
-        <td><%= video.url %></td>
-        <td><% @video_id = (/([\w-]{11})/.match(video.url)).to_s %>
-        <%@embed_code = "<iframe width='440' height='260' src='http://www.youtube.com/embed/#{@video_id}' frameborder='0' allowfullscreen></iframe>"%>
-        <%= raw(@embed_code) %>         
-        </td>
-        <td><%= video.descripcion %></td>
-        <td><%= link_to 'Show', empresa_video_path(@empresa,video) %></td>
-        <td><%= link_to 'Edit', edit_empresa_video_path(@empresa,video)%></td>
-        <td><%= link_to 'Destroy',[video.empresa, video], method: :delete, data: { confirm: 'Are you sure?'} %>
-      </tr>
-    <% end %>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Video', new_empresa_video_path %>
-<%= link_to 'Back', empresas_path %>
+	                                <a><%= link_to 'Ver', empresa_video_path(@empresa,video),:class => "btn btn-info"%></a>
+	                                <a><%= link_to 'Editar', edit_empresa_video_path(@empresa,video),:class => "btn btn-info" %></a>
+	                                <a><%= link_to 'Eliminar',[video.empresa, video], method: :delete, data: { confirm: 'Are you sure?'} ,:class => "btn btn-info" %></a>
+	                            </div>                          
+	                          </td>               
+	                      </tr>   
+	                    </div>
+	                 <% end %>
+	              <% end %>
+	            </table>    
+	      </div>
+	    </div>
+	 </div>
+</div>

@@ -10,36 +10,58 @@
       </ul>
     </div>
   <% end %>
+<form class="form-horizontal" >
+    <fieldset>
+        <legend>Datos de Detalles del Producto</legend>
+        <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Descripción:</label>
+          <div class="col-lg-10">
+            <%= f.text_field :descripción, class: "form-control", placeholder: "Descripción"%>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Elaboración:</label>
+          <div class="col-lg-10">
+            <%= f.text_field :elaboración, class: "form-control", placeholder: "Elaboración"%>
+          </div>
+        </div>
+         <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Presentación:</label>
+          <div class="col-lg-10">
+            <%= f.text_field :presentación, class: "form-control", placeholder: "Presentación"%>
+          </div>
+        </div>        
+         <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Packaging:</label>
+          <div class="col-lg-10">
+            <%= f.text_field :packaging, class: "form-control", placeholder: "Packaging"%>
+          </div>
+        </div>        
+         <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Origen:</label>
+          <div class="col-lg-10">
+            <%= f.text_field :origen, class: "form-control", placeholder: "Origen"%>
+          </div>
+        </div>        
+         <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Secanza:</label>
+          <div class="col-lg-10">
+            <%= f.text_field :secanza, class: "form-control", placeholder: "Secanza"%>
+          </div>
+        </div> 
+         <div class="form-group">
+          <label for="" class="col-lg-2 control-label">Característica:</label>
+          <div class="col-lg-10">
+            <%= f.text_field :característica, class: "form-control", placeholder: "Característica"%>
+          </div>
+        </div> 
+       <div class="col-lg-offset-4">
+              <div class="btn-group">
+                   <a><%= f.submit "Guardar", class: "btn btn-info btn-raised" %></a>  
+              </div>
+              <div class="btn-group">     
+                   <a><%= link_to "Volver", empresa_producto_item_producto_detalles_path,class: "btn btn-info btn-raised" %></a>  
+              </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :descripción %><br>
-    <%= f.text_field :descripción %>
-  </div>
-  <div class="field">
-    <%= f.label :elaboración %><br>
-    <%= f.text_field :elaboración %>
-  </div>
-  <div class="field">
-    <%= f.label :presentación %><br>
-    <%= f.text_field :presentación %>
-  </div>
-    <div class="field">
-    <%= f.label :packaging %><br>
-    <%= f.text_field :packaging %>
-  </div>
-  <div class="field">
-    <%= f.label :origen %><br>
-    <%= f.text_field :origen %>
-  </div>
-  <div class="field">
-    <%= f.label :secanza %><br>
-    <%= f.text_field :secanza %>
-  </div>
-  <div class="field">
-    <%= f.label :característica %><br>
-    <%= f.text_field :característica %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

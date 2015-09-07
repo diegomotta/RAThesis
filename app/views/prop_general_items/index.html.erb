@@ -1,30 +1,49 @@
-<h1>Listing prop_general_items</h1>
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2 class="panel-title text-center">Items de Información Nutricional</h2>
+      </div>
+      <div class="col-lg-offset-5">
+        <div class="btn-group">
+          <a ><%= link_to "<button type='button'class='btn btn-info'>Nuevo</button>".html_safe, new_empresa_producto_prop_general_prop_general_item_path%></a> 
+        </div>
+        <div class="btn-group">    
+          <a ><%= link_to "<button type='button'class='btn btn-info'>Volver</button>".html_safe,empresa_producto_prop_generals_path%></a>   
+        </div>
+      </div>   
+      <div class="panel-body">
+        <table class="table table-striped"> 
+          <thead>                              
+            <tr class="info">
+              <th class="text-center"><h5><b>Item</b></h5></th>
+              <th class="text-center"><h5><b>Descripción</b></h5></th>
+              <th class="text-center"><h5><b>Acciones</b></h5></th>
+            </tr>
+          </thead>
+          <% if @prop_general.prop_general_items.empty? == false %>
+          <% @prop_general_items.each do |prop_general_item| %>
+          <div class="row">
+            <tr class="active">
+              <td><h5><%= prop_general_item.item %></h5></td>
+              <td><h5><%= prop_general_item.descripción %></h5></td>
+              <td class="text-center">
+                  <div class="btn-group-vertical">
+                 <!-- <a><%= link_to 'Show', empresa_producto_prop_general_prop_general_item_path(@empresa,@producto,@prop_general,prop_general_item),:class => "btn btn-info btn-raised" %></a>-->
+                <a><%= link_to 'Editar', edit_empresa_producto_prop_general_prop_general_item_path(@empresa,@producto,@prop_general,prop_general_item),:class => "btn btn-info btn-raised" %></a>
+                <a><%= link_to 'Eliminar', empresa_producto_prop_general_prop_general_item_path(@empresa,@producto,@prop_general,prop_general_item), method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-info btn-raised" %></a>
+              </td>
+            </tr>
+          </div>
+          <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Item</th>
-      <th>Descripción</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% if @prop_general.prop_general_items.empty? == false %>
-    <% @prop_general_items.each do |prop_general_item| %>
-      <tr>
-        <td><%= prop_general_item.item %></td>
-        <td><%= prop_general_item.descripción %></td>
-        <td><%= link_to 'Show', empresa_producto_prop_general_prop_general_item_path(@empresa,@producto,@prop_general,prop_general_item) %></td>
-        <td><%= link_to 'Edit', edit_empresa_producto_prop_general_prop_general_item_path(@empresa,@producto,@prop_general,prop_general_item) %></td>
-        <td><%= link_to 'Destroy', empresa_producto_prop_general_prop_general_item_path(@empresa,@producto,@prop_general,prop_general_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'Nuevo', new_empresa_producto_prop_general_prop_general_item_path %>
-<%= link_to 'Atras', empresa_producto_prop_generals_path %>
+

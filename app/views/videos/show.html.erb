@@ -1,24 +1,49 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Titulo:</strong>
-  <%= @video.titulo %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @video.url %>
-   <p>
- <% @video_id = (/([\w-]{11})/.match(@video.url)).to_s %>
-<%@embed_code = "<iframe width='640' height='360' src='http://www.youtube.com/embed/#{@video_id}' frameborder='0' allowfullscreen></iframe>"%>
-<%= raw(@embed_code) %>	
- </p>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @video.descripcion %>
-</p>
-
-<%= link_to 'Edit', edit_empresa_video_path(@empresa,@video) %> 
-<%= link_to 'Back',  empresa_videos_path(@empresa)%>
+<div class="container">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title text-center">Videos</h2>
+            </div>
+                
+            <div class="panel-body">
+                <form class="form-horizontal" >
+	                <legend>Datos del Video</legend>
+	                <fieldset>
+                        <div class="form-group">
+                            <label for="" class="col-lg-2 control-label">Video:</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" value=<%= @video.titulo %> disabled = true>
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label for="" class="col-lg-2 control-label">URL:</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" value=<%= @video.url %> disabled = true>
+                            </div>
+                        </div>   
+                         <div class="form-group">
+                            <label for="" class="col-lg-2 control-label">Descripción:</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" value=<%= @video.descripcion  %> disabled = true>
+                            </div>
+                        </div>                     
+                    </fieldset>
+                </form>  
+            </div> 
+        </div>
+        <div class="panel panel-info">
+        	<div class="panel-body text-center">
+                <div class="col-lg-offset1">
+      				<% @video_id = (/([\w-]{11})/.match(@video.url)).to_s %>
+					<%@embed_code = "<iframe width='650' height='360' src='http://www.youtube.com/embed/#{@video_id}' frameborder='0' allowfullscreen></iframe>"%>
+					<%= raw(@embed_code) %>	
+             	</div>
+     	        <div class="form-group">
+			      <div class="col-lg-12 text-center">
+			        <%= link_to 'Volver',  empresa_videos_path(@empresa), class: "btn btn-info btn-raised" %>
+			      </div>
+			    </div> 
+            </div>
+        </div>        
+    </div>
+</div>

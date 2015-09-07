@@ -1,4 +1,6 @@
 json.array!(@detalles) do |detalle|
-  json.extract! detalle, :id, :descripcion, :elaboracion, :presentacion, :origen, :secanza, :caracteristica
-  json.url detalle_url(detalle, format: :json)
+  json.extract! detalle, :id, :descripción, :elaboración, :presentación, :origen, :secanza, :característica
+  json.url detalle_url
 end
+
+

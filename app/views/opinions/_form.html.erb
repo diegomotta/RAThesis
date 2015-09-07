@@ -10,28 +10,45 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
-  </div>
-  <div class="field">
-    <%= f.label :nacionalidad %><br>
-    <%= f.text_field :nacionalidad %>
-  </div>
-  <div class="field">
-    <%= f.label :pais %><br>
-    <%= f.text_field :pais %>
-  </div>
-  <div class="field">
-    <%= f.label :ciudad %><br>
-    <%= f.text_field :ciudad %>
-  </div>
-  <div class="field">
-    <%= f.label :comentario %><br>
-    <%= f.text_field :comentario %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <form class="form-horizontal" >
+    <fieldset>
+      <legend>Datos del Comentario</legend>
+      <div class="form-group">
+        <label for="" class="col-lg-4 control-label">Nombre:</label>
+        <div class="col-lg-12">
+          <%= f.text_field :nombre, class: "form-control", placeholder: "Nombre"%>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="col-lg-4 control-label">Nacionaldad:</label>
+        <div class="col-lg-12">
+          <%= f.text_field :nacionalidad, class: "form-control", placeholder: "Nacionalidad"%>
+        </div>
+      </div>          
+      <div class="form-group">
+        <label for="" class="col-lg-4 control-label">País:</label>
+        <div class="col-lg-12">
+          <%= f.text_field :pais, class: "form-control", placeholder: "País"%>
+        </div>
+      </div>   
+      <div class="form-group">
+        <label for="" class="col-lg-4 control-label">Ciudad:</label>
+        <div class="col-lg-12">
+          <%= f.text_field :ciudad, class: "form-control", placeholder: "Ciudad"%>
+        </div>
+      </div>   
+      <div class="form-group">
+        <label for="" class="col-lg-4 control-label">Comentario:</label>
+        <div class="col-lg-12">
+          <%= f.text_field :comentario, class: "form-control", placeholder: "Comentario"%>
+        </div>
+      </div>  
+      <div class="form-group">
+        <div class="col-lg-12 text-center">
+          <%= f.submit "Guardar", class: "btn btn-info btn-raised" %>
+          <%= link_to 'Atrás', empresa_producto_item_producto_opinions_path,class: "btn btn-info btn-raised" %>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+  <% end %>

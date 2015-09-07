@@ -40,7 +40,7 @@ class PropGeneralsController < ApplicationController
     @prop_general = @producto.prop_generals.new(prop_general_params)
     respond_to do |format|
       if @prop_general.save
-        format.html { redirect_to empresa_producto_prop_general_path(@empresa,@producto,@prop_general), notice: 'Prop general was successfully created.' }
+        format.html { redirect_to empresa_producto_prop_generals_path, notice: 'Prop general was successfully created.' }
         format.json { render :show, status: :created, location: @prop_general }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class PropGeneralsController < ApplicationController
     @prop_general = @producto.prop_generals.find(params[:id])
     respond_to do |format|
       if @prop_general.update(prop_general_params)
-        format.html { redirect_to empresa_producto_prop_general_path(@empresa,@producto,@prop_general), notice: 'Prop general was successfully updated.' }
+        format.html { redirect_to empresa_producto_prop_generals_path, notice: 'Prop general was successfully updated.' }
         format.json { render :show, status: :ok, location: @prop_general }
       else
         format.html { render :edit }
@@ -74,7 +74,7 @@ class PropGeneralsController < ApplicationController
     @prop_general = @producto.prop_generals.find(params[:id])
     @prop_general.destroy
     respond_to do |format|
-      format.html { redirect_to empresa_producto_prop_generals_path(@empresa,@producto,@prop_general), notice: 'Prop general was successfully updated.' }
+      format.html { redirect_to empresa_producto_prop_generals_path, notice: 'Prop general was successfully updated.' }
       format.json { head :no_content }
     end
   end

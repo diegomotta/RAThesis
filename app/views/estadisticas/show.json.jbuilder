@@ -1,0 +1,1 @@
+json.extract! @estadistica, :id, :califproducto, :precio, :disponibleproducto, :otrosabor, :imagenempresareg, :yerbamedicinal, :sabortoman, :saboredad, :cambiodeproducto, :enteroprod, :cuantoconsumo, :otroproducto, :justifprod, :recomendacion, :created_at, :updated_at

@@ -28,6 +28,9 @@ class PrepararMatesController < ApplicationController
 
   # GET /preparar_mates/1/edit
   def edit
+          @empresa = Empresa.find(params[:empresa_id])   
+    @producto = @empresa.productos.find(params[:producto_id])
+    @preparar_mate = @producto.preparar_mates.find(params[:id])
   end
 
   # POST /preparar_mates
@@ -39,7 +42,7 @@ class PrepararMatesController < ApplicationController
     @preparar_mate = @producto.preparar_mates.build(preparar_mate_params)
     respond_to do |format|
       if @preparar_mate.save
-        format.html { redirect_to empresa_producto_preparar_mate_path(@empresa,@producto,@preparar_mate), notice: 'Preparar mate was successfully created.' }
+        format.html { redirect_to empresa_producto_preparar_mates_path, notice: 'Preparar mate was successfully created.' }
         format.json { render :show, status: :created, location: @preparar_mate }
       else
         format.html { render :new }

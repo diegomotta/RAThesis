@@ -1,29 +1,55 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @opinion.nombre %>
-</p>
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2 class="panel-title text-center">Comentarios del Producto</h2>
+      </div>
 
-<p>
-  <strong>Nacionalidad:</strong>
-  <%= @opinion.nacionalidad %>
-</p>
+      <div class="panel-body">
+        <form class="form-horizontal" >
+          <legend>Datos del Comentario</legend>
+          <fieldset>
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Nombre:</label>
+              <div class="col-lg-10">
+                <input class="form-control" value=<%= @opinion.nombre%> disabled = true>
+              </div>
+            </div> 
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Nacionalidad:</label>
+              <div class="col-lg-10">
+                <input class="form-control" value=<%= @opinion.nacionalidad %> disabled = true>
+              </div>
+            </div>   
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Pais:</label>
+              <div class="col-lg-10">
+                <input class="form-control" value=<%= @opinion.pais%> disabled = true>
+              </div>
+            </div>   
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Ciudad:</label>
+              <div class="col-lg-10">
+                <input class="form-control" value=<%= @opinion.ciudad%> disabled = true>
+              </div>
+            </div>  
+            <div class="form-group">
+              <label for="" class="col-lg-2 control-label">Comentario:</label>
+              <div class="col-lg-10">
+              <%= text_area_tag 'd', @opinion.comentario, :class =>"form-control", :disabled =>true %>
+              </div>
+            </div>  
+            <div class="form-group">
+              <div class="col-lg-offset-5">
+                <%= link_to 'Volver',  empresa_producto_item_producto_opinions_path, class: "btn btn-info btn-raised" %>
+              </div>
+            </div>                                                                  
+          </fieldset>
+        </form>  
+      </div> 
+    </div>
+    </div>
+    </div>
 
-<p>
-  <strong>Pais:</strong>
-  <%= @opinion.pais %>
-</p>
 
-<p>
-  <strong>Ciudad:</strong>
-  <%= @opinion.ciudad %>
-</p>
-
-<p>
-  <strong>Comentario:</strong>
-  <%= @opinion.comentario %>
-</p>
-
-<%= link_to 'Edit', edit_empresa_producto_item_producto_opinion_path(@empresa,@producto,@item_producto,@opinion) %> 
-<%= link_to 'Back', empresa_producto_item_producto_opinions_path%>

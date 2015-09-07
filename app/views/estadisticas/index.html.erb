@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2 class="panel-title text-center" >Estadísticas</h2>
+      </div>   
+      <div class="col-md-3 col-lg-offset-5">
+        <div class="btn-group">
+          <a ><%= link_to "<button type='button'class='btn btn-info'>Nuevo</button>".html_safe, new_empresa_estadistica_path%></a> 
+        </div>
+        <div class="btn-group">
+          <a ><%= link_to "<button type='button'class='btn btn-info'>Volver</button>".html_safe, empresa_path(@empresa) %></a>  
+        </div>
+      </div>            
+      <div class="panel-body">
+        <% if @empresa.estadisticas.empty? == false %>
+        <table class="table table-striped "> 
+          <thead>
+            <tr class="info">
+             <th class="text-center"><h5>Calificación</h5></th>
+             <th class="text-center"><h5>Precio</h5></th>
+             <th class="text-center"><h5>Imagen</h5></th>
+             <th class="text-center"><h5>¿Como se entero?</h5></th>
+             <th class="text-center"><h5>¿Que sabor prefiere?</h5></th>
+             <th class="text-center"><h5>¿Como consume?</h5></th>
+             <th class="text-center"><h5>¿Que endulzante?</h5></th>
+             <th class="text-center"><h5>¿Utiliza alguna hierba natural?</h5></th>
+             <th class="text-center"><h5>¿Otra alternativa?</h5></th>
+
+           </tr>
+         </thead>
+         <% @estadisticas.each do |estadistica| %>
+         <div class="row">
+          <tr class="active">
+            <td><h5><%= estadistica.califproducto %></h5></td>
+            <td><h5><%= estadistica.precio %></h5></td>
+            <td><h5><%= estadistica.imagenempresareg %></h5></td>
+            <td><h5><%= estadistica.enteroprod %></h5></td>
+            <td><h5><%= estadistica.sabortoman %></h5></td>
+            <td><h5><%= estadistica.cuantoconsumo %></h5></td>
+            <td><h5><%= estadistica.justifprod %></h5></td>
+            <td><h5><%= estadistica.yerbamedicinal %></h5></td>
+            <td><h5><%= estadistica.otroproducto %></h5></td>        
+            <td class="text-center">
+            <div class="btn-group btn-group-vertical">
+                <a><%= link_to 'Editar', [:edit, @empresa,estadistica],:class => "btn btn-info"%></a>
+                <a><%= link_to 'Eliminar',empresa_estadistica_path(@empresa,estadistica), method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-info" %></a>
+            </div>                
+            </td>
+          </tr>
+        </div>  
+        <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>                      
+</div>
+</div>
+</div>
+
+
