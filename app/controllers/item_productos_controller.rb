@@ -20,12 +20,15 @@ class ItemProductosController < ApplicationController
     respond_to do |format|
       format.html {
         val = url_for([@empresa,@producto,@item_producto])
+
         valor = val.gsub('http://0.0.0.0:3000', '')
+        #http://tranquil-lake-8200.herokuapp.com
+        #valor = val.gsub('http://0.0.0.0:3000', '')
         qrcode = RQRCode::QRCode.new(valor, :size => 3, :level => :l)
         png = qrcode.to_img                                      
         send_data png.resize(200, 200), :type => 'image/png', :disposition => 'attachment'
       }
-      format.json{render :json => @item_producto.to_json(:only => [:id, :marca, :tipo],:methods => [:image_url],
+      format.json{render :json => @item_producto.to_json(:only => [:id, :marca, :precio, :tipo],:methods => [:image_url],
       :include =>{ :detalles => { :only => [:id,:descripción, :elaboración, :presentación, :packaging ,:origen, :secanza, :característica], 
       :include=>{ :prop_especificas=> {:only=>[:id,:item, :descripción]}}},
                   :galeria_imagenes => { :only => [:id,:titulo,:descripcion ] ,:methods => [:image_url]},
@@ -103,6 +106,6 @@ class ItemProductosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_producto_params
-      params.require(:item_producto).permit(:marca, :tipo, :image)
+      params.require(:item_producto).permit(:marca, :tipo, :precio, :image)
     end
 end

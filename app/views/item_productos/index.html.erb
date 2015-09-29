@@ -41,6 +41,7 @@
               <tr class="info">
                <th class="text-center"><h5><b>Marca</b></h5></th>
                <th class="text-center"><h5><b>Tipo</b></h5></th>
+               <th class="text-center"><h5><b>Precio unitario</b></h5></th>
                <th class="text-center"><h5><b>Imagen</b></h5></th>
                <th class="text-center"><h5><b>Codigo QR</b></h5></th>
                <th class="text-center"><h5><b>Acciones</b></h5></th>
@@ -53,6 +54,7 @@
               <tr class="active">
                 <td><h6><%= item_producto.marca %></h6></td>
                 <td><h6><%= item_producto.tipo %></h6></td>
+                <td><h6><%= item_producto.precio %></h6></td>
                 <td class="text-center"><h6><%= image_tag item_producto.image.url(:thumb) %></h6></td>
                 <%@item =item_producto %>
                 <%  qr_size = 3 %>

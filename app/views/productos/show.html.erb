@@ -11,9 +11,7 @@
                  <fieldset>
                     <div class="form-group">
                         <label for="" class="col-lg-2 control-label">Nombre:</label>
-                        <div class="col-lg-10">
-                            <input class="form-control" value=<%= @producto.titulo %> disabled = true>
-                        </div>
+                        <%=text_field_tag 'query',@producto.titulo ,:readonly => true%>
                     </div>                                
                 </fieldset>
             </form>  
