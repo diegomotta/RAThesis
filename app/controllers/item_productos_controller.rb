@@ -20,8 +20,9 @@ class ItemProductosController < ApplicationController
     respond_to do |format|
       format.html {
         val = url_for([@empresa,@producto,@item_producto])
-
-        valor = val.gsub('http://0.0.0.0:3000', '')
+        #http://desolate-cliffs-8987.herokuapp.com/
+        #valor = val.gsub('http://0.0.0.0:3000', '')
+        valor = val.gsub('http://desolate-cliffs-8987.herokuapp.com', '')
         #http://tranquil-lake-8200.herokuapp.com
         #valor = val.gsub('http://0.0.0.0:3000', '')
         qrcode = RQRCode::QRCode.new(valor, :size => 3, :level => :l)
