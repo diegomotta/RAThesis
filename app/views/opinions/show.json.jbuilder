@@ -1,1 +1,1 @@
-json.extract! @opinion, :id, :nombre, :nacionalidad, :provincia, :ciudad, :comentario, :created_at, :updated_at
+json.extract! @opinion, :id, :nombre, :nacionalidad, :pais, :ciudad, :comentario, :created_at, :updated_at

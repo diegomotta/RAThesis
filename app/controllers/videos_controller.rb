@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :edit, :update, :destroy]
+
 
   # GET /videos
   # GET /videos.json
@@ -64,7 +64,7 @@ class VideosController < ApplicationController
   # DELETE /videos/1.json
   def destroy
     @empresa = Empresa.find(params[:empresa_id])
-    @video = @empresa.videos.find(params[:id]) 
+    @video = @empresa.videos.find(params[:id])  
     @video.destroy
     respond_to do |format|
       format.html { redirect_to empresa_videos_path, notice: 'Video was successfully destroyed.' }
@@ -74,9 +74,6 @@ class VideosController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_video
-      @video = Video.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
