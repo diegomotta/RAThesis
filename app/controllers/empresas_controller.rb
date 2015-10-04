@@ -14,6 +14,8 @@ class EmpresasController < ApplicationController
       format.html # show.html.erb
       format.json{render :json => @empresa.to_json(:only => [:id, :nombre, :actividad,:país ,:provincia, :localidad, :dirección, :telefono, :misión, :visión],:methods => [:image_url],
       :include =>{:noticia_empresas =>{:only => [:titulo, :descripcion],:methods => [:image_url]},
+                  :informacion_empresas=>{:only => [:item_de_info], 
+                        :include =>{:item_de_infos => {:only=>[:título,:descripción],:methods=>[:image_url]}}}
                   :videos =>{:only => [:titulo, :url, :descripcion]},
                   :ubicacion_geos => {:only =>[:latitude, :longitude, :address, :description, :title]},
                   :productos => { :only => [:id, :titulo],
