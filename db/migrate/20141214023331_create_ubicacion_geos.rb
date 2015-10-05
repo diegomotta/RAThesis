@@ -10,5 +10,6 @@ class CreateUbicacionGeos < ActiveRecord::Migration
 
       t.timestamps
     end
+        add_attachment :ubicacion_geos, :image
   end
 end

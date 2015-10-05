@@ -26,6 +26,7 @@
                       <th class="text-center">Direccion</th>
                       <th class="text-center">Descripcion</th>
                       <th class="text-center">Título</th>
+                      <th class="text-center">Imagen</th>
                       <th class="text-center">Acciones</th>
                     </tr>
                     <% @ubicacion_geos.each do |ubicacion_geo| %>
@@ -36,6 +37,7 @@
                           <td><%= ubicacion_geo.address %></td>
                           <td><%= ubicacion_geo.description %></td>
                           <td><%= ubicacion_geo.title %></td>
+                          <td class="text-center"><h5><%= image_tag ubicacion_geo.image.url(:thumb) %></h5></td>
                           <td>
                                <div class="btn-group-vertical">
                                 <a><%= link_to 'Ver', empresa_ubicacion_geo_path(@empresa,ubicacion_geo), :class => "btn btn-info" %></a>

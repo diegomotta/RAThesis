@@ -85,7 +85,7 @@ class UbicacionGeosController < ApplicationController
     @ubicacion_geo = @empresa.ubicacion_geos.find(params[:id]) 
     @ubicacion_geo.destroy
     respond_to do |format|
-      format.html { redirect_to empresa_ubicacion_geos_path(@empresa,@ubicacion_geo), notice: 'Ubicacion geo was successfully destroyed.' }
+      format.html { redirect_to empresa_ubicacion_geos_path, notice: 'Ubicacion geo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -96,6 +96,6 @@ class UbicacionGeosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ubicacion_geo_params
-      params.require(:ubicacion_geo).permit(:latitude, :longitude, :address, :description, :title)
+      params.require(:ubicacion_geo).permit(:latitude, :longitude, :address, :description, :title,:image)
     end
 end
