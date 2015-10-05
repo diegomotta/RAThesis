@@ -17,7 +17,7 @@ class EmpresasController < ApplicationController
                   :informacion_empresas=>{:only => [:item_de_info], 
                         :include =>{:item_de_infos => {:only=>[:título,:descripción],:methods=>[:image_url]}}},
                   :videos =>{:only => [:titulo, :url, :descripcion]},
-                  :ubicacion_geos => {:only =>[:latitude, :longitude, :address, :description, :title]},
+                  :ubicacion_geos => {:only =>[:latitude, :longitude, :address, :description, :title],:methods=>[:image_url]},
                   :productos => { :only => [:id, :titulo],
                   :include =>{:prop_generals =>{:only =>[:id, :descripción],
                   :include =>{:prop_general_items =>{:only =>[:item, :descripción]},
