@@ -24,7 +24,9 @@ default: &default
 development:
   <<: *default
   database: RAThesis_development
-
+  pool: 5
+  username: diego
+  password: metallica22
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -82,4 +84,6 @@ development:
 production:
   <<: *default
   database: RAThesis_production
-  password: <%= ENV['RATHESIS_DATABASE_PASSWORD'] %>
+  pool: 5
+  username: diego
+  password: metallica22
