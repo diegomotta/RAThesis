@@ -29,12 +29,13 @@
             <div class="panel-body text-center">
                 <div class="btn-group-vertical">
                     <a href="javascript:void(0)" ><%= link_to 'Noticias',empresa_noticia_empresas_path(@empresa) ,:class => "btn btn-info btn-raised" %></a>
-                    <a href="javascript:void(0)" ><%= link_to 'Información de Empresa',empresa_informacion_empresas_path(@empresa) ,:class => "btn btn-info btn-raised" %></a>
+                    <!--a href="javascript:void(0)" ><%= link_to 'Información de Empresa',empresa_informacion_empresas_path(@empresa) ,:class => "btn btn-info btn-raised" %></a>-->
+                     <a href="javascript:void(0)" ><%= link_to 'Encuestas', empresa_estadisticas_path(@empresa),:class => "btn btn-info btn-raised"  %></a>
                 </div>
                 <div class="btn-group-vertical">
                    <a href="javascript:void(0)" ><%= link_to 'Categoria de Productos',empresa_productos_path(@empresa),:class => "btn btn-info btn-raised"  %></a>
                    <a href="javascript:void(0)" ><%= link_to 'Mapa Geogŕafico', empresa_ubicacion_geos_path(@empresa),:class => "btn btn-info btn-raised"  %></a>
-                   <a href="javascript:void(0)" ><%= link_to 'Estadísticas', empresa_estadisticas_path(@empresa),:class => "btn btn-info btn-raised"  %></a>
+
                 </div>
                 <div class="btn-group-vertical">
                     <a><%= link_to 'Videos', empresa_videos_path(@empresa),:class => "btn btn-info btn-raised"  %>      
